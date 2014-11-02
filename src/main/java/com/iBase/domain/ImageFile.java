@@ -1,17 +1,26 @@
 package com.iBase.domain;
 
-import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 public class ImageFile {
 
-	private MultipartFile imageFile;
+	private CommonsMultipartFile imageFile = null;
+	private String name = null;
 
-	public MultipartFile getImageFile() {
+	public CommonsMultipartFile getImageFile() {
 		return imageFile;
 	}
 
-	public void setImageFile(MultipartFile imageFile) {
+	public void setImageFile(CommonsMultipartFile imageFile) {
 		this.imageFile = imageFile;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 	
 }

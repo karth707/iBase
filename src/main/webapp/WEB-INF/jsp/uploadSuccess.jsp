@@ -1,7 +1,7 @@
 <%@ include file="/WEB-INF/jsp/include.jsp" %>
 <html>
 <body>
-<h2>Spring MVC - Uploading a file.. </h2>
-Your file is successfully uploaded.
+<h3 style="color: green;">File has been uploaded successfully.</h3> <br>
+File Name : ${imageFile.name}
 </body>
 </html>
