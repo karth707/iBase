@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+	<!-- the application context definition for the springapp DispatcherServlet -->
+
+	<bean id="messageSource"
+		class="org.springframework.context.support.ResourceBundleMessageSource">
+		<property name="basename" value="messages" />
+	</bean>
+	
+	<!-- Database beans -->
+	<bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<property name="url" value="jdbc:mysql://localhost/TestDatabase" />
+		<property name="username" value="root" />
+		<property name="password" value="password" />
+	</bean>
+	<bean id="userInfoDAO" class="com.iBase.service.db.JdbcUserInfoDAO">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	
+	<!-- Validators beans -->
+	<bean id="validator" class="com.iBase.web.validators.ImageFileValidator" />
+
+	<!-- URLS -->	
+	<bean name="/home.htm" class="com.iBase.web.HomeController">
+	    <property name="userInfoDAO" ref="userInfoDAO" />
+	</bean>
+	<bean name="/upload.htm" class="com.iBase.web.FileController">
+	</bean>
+
+	<!-- Resolvers -->
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver" >
+		<property name="maxUploadSize" value="100000"/>
+	</bean>
+	<bean id="viewResolver"
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="viewClass"
+			value="org.springframework.web.servlet.view.JstlView"></property>
+		<property name="prefix" value="/WEB-INF/jsp/"></property>
+		<property name="suffix" value=".jsp"></property>
+	</bean>
+</beans>
