@@ -33,6 +33,8 @@
 	</bean>
 	<bean name="/upload.htm" class="com.iBase.web.FileController">
 	</bean>
+	<bean name="/login.htm" class="com.iBase.web.LoginController">
+	</bean>
 
 	<!-- Resolvers -->
 	<bean id="multipartResolver"
