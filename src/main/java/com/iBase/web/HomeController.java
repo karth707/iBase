@@ -30,10 +30,8 @@ public class HomeController {
 
 	@RequestMapping(value={"/", "/home*"}, method = RequestMethod.GET)
     public String handleHomeRequest(Model model){
-    	
 
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-				
 		if (!(auth instanceof AnonymousAuthenticationToken)) {
 			
 	        //add to the model to display on page
