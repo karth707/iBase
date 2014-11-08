@@ -45,7 +45,8 @@ public class FileController implements HandlerExceptionResolver{
 	}
 	
 	@RequestMapping(method = RequestMethod.GET)
-	public String getForm(Model model) {
+	public String getForm(Model model)
+    {
 		ImageFile imageModel = new ImageFile();
 		model.addAttribute("imageFile", imageModel);
 		Authentication auth = SecurityContextHolder.getContext()

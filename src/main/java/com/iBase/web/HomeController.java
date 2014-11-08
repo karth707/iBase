@@ -31,10 +31,12 @@ public class HomeController {
 	@RequestMapping(value={"/", "/home*"}, method = RequestMethod.GET)
     public String handleHomeRequest(Model model){
     	
-		Authentication auth = SecurityContextHolder.getContext()
-				.getAuthentication();
+
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+				
 		if (!(auth instanceof AnonymousAuthenticationToken)) {
 			
+	        //add to the model to display on page
 			String userId = null;
 			UserDetails userDetail = (UserDetails) auth.getPrincipal();
 			model.addAttribute("userName", userDetail.getUsername());
