@@ -38,7 +38,10 @@ public class FileController implements HandlerExceptionResolver{
 
 	@Autowired
 	ImageFileValidator validator;
-	
+
+	//adding comment for test
+
+
 	@InitBinder
 	private void initBinder(WebDataBinder binder){
 		binder.setValidator(validator);
