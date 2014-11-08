@@ -68,9 +68,11 @@ public class FileController implements HandlerExceptionResolver{
 			File dir = new File(rootPath + File.separator + "images");
 			if (!dir.exists())
 				dir.mkdirs();
-			File imageFile = new File(dir.getAbsolutePath()+File.separator + imageModel.getImageFile().getOriginalFilename());
-			//String filePath = System.getProperty("java.io.tmpdir") + "/" + imageModel.getImageFile().getOriginalFilename();
+			File imageFile = new File(dir.getAbsolutePath()
+					+File.separator + imageModel.getImageFile().getOriginalFilename());
+			
 			imageModel.setName(imageModel.getImageFile().getOriginalFilename());
+			
 			try {
 				outputStream = new FileOutputStream(imageFile);
 				outputStream.write(imageModel.getImageFile().getFileItem().get());
