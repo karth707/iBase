@@ -9,7 +9,7 @@
       <link href="<c:url value="/resources/css/bootstrap.min.css" />" rel="stylesheet" type="text/bootstrap.min.css">
   </head>
   <body>
-  <sec:authorize access="hasRole('ROLE_USER')">
+  
   <div class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
           <div class="collapse navbar-collapse navHeaderCollapse">
@@ -21,10 +21,10 @@
           </div>
       </div>
   </div>
-
+	<sec:authorize access="hasRole('ROLE_USER')">
   <div class="container">
       <!-- CHANGE IMG TO USER PROFILE PIC-->
-      <img src="/resources/images/sparky1.jpg" alt="Sparky" style="width:100px;height:100px;display:inline-block">
+      <img src="<c:url value="/resources/images/sparky1.jpg" />" alt="Sparky" style="width:100px;height:100px;display:inline-block">
       <!-- CHANGE NAME TO USER'S NAME-->
       <h4 style="display:inline-block;">Name</h4>
       <h4 style="display:inline-block; float:right">Logged in as <em><c:out value="${userName}"/></em></h4>

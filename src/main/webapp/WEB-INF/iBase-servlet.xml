@@ -29,7 +29,8 @@
 		<property name="password" value="password" />
 	</bean>
 	<bean id="userInfoDAO" class="com.iBase.service.db.JdbcUserInfoDAO">
-		<property name="dataSource" ref="dataSource" />
+		<!-- <property name="dataSource" ref="dataSource" /> -->
+		<constructor-arg ref="dataSource"/>
 	</bean>
 	
 	<!-- Validators beans -->
@@ -40,6 +41,7 @@
 	    <property name="userInfoDAO" ref="userInfoDAO" />
 	</bean> -->
 	<!-- <bean name="/upload.htm" class="com.iBase.web.FileController">
+	    <property name="userInfoDAO" ref="userInfoDAO" />
 	</bean> -->
 	<!-- <bean name="/login.htm" class="com.iBase.web.LoginController">
 	</bean> -->

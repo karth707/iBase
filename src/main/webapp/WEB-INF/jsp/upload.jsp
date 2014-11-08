@@ -1,5 +1,4 @@
 <%@ include file="/WEB-INF/jsp/include.jsp" %>
-
 <html>
     <body>
         <h2>Upload Image:</h2>

@@ -25,8 +25,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -39,28 +37,27 @@ import com.iBase.domain.ImageFile;
 import com.iBase.domain.UserInfo;
 import com.iBase.service.db.UserInfoDAO;
 import com.iBase.service.util.Jsonizer;
-import com.iBase.web.validators.ImageFileValidator;
 
 @Controller
-@RequestMapping("/upload")
+//@RequestMapping("/upload")
 public class FileController implements HandlerExceptionResolver{
 
 	protected final Log logger = LogFactory.getLog(getClass());
 	private ObjectMapper mapper = new ObjectMapper();
 	private Jsonizer jsonizer = new Jsonizer();
 
-	@Autowired
-	ImageFileValidator validator;
+	//@Autowired
+	//ImageFileValidator validator;
 	
 	@Autowired
 	private UserInfoDAO userInfoDAO;
 	
-	@InitBinder
-	private void initBinder(WebDataBinder binder){
-		binder.setValidator(validator);
-	}
+//	@InitBinder
+//	private void initBinder(WebDataBinder binder){
+//		binder.setValidator(validator);
+//	}
 	
-	@RequestMapping(method = RequestMethod.GET)
+	@RequestMapping(value="/upload", method = RequestMethod.GET)
 	public String getForm(Model model)
     {
 		ImageFile imageModel = new ImageFile();
@@ -70,25 +67,33 @@ public class FileController implements HandlerExceptionResolver{
 		if (!(auth instanceof AnonymousAuthenticationToken)) {
 			UserDetails userDetail = (UserDetails) auth.getPrincipal();
 			model.addAttribute("userName", userDetail.getUsername());
+			logger.info("Returning upload View!");
 			return "upload";
 		}
 		return "403";
 	}
 	
-	@RequestMapping(method = RequestMethod.POST)
+	@RequestMapping(value="/upload", method = RequestMethod.POST)
 	public String imageFileUploaded(@ModelAttribute(value="imageFile") ImageFile imageModel
-			, @ModelAttribute(value="userName") String userName, Model model
-			, BindingResult result){
+			, Model model, BindingResult result){
 
+		String userName = null;
+		Authentication auth = SecurityContextHolder.getContext()
+				.getAuthentication();
+		if (!(auth instanceof AnonymousAuthenticationToken)) {
+			UserDetails userDetail = (UserDetails) auth.getPrincipal();
+			model.addAttribute("userName", userDetail.getUsername());
+			userName = userDetail.getUsername();
+		}
+		
 		if(!result.hasErrors()){
 			FileOutputStream outputStream = null;
 			String rootPath = System.getProperty("catalina.home");
 			File dir = new File(rootPath + File.separator + "images" + File.separator + userName);
 			if (!dir.exists())
 				dir.mkdirs();
-			
 			UserInfo user = getUserInfo(userName);
-			
+
 			String newimageLocation = dir.getAbsolutePath()
 					+File.separator 
 					+ Integer.toString(user.getImageCount()+1);
@@ -98,7 +103,6 @@ public class FileController implements HandlerExceptionResolver{
 				model.addAttribute("uploadLimit", "You have reached Maximum uploads");
 				return "upload";
 			}
-			
 			File imageFile = new File(newimageLocation);
 			imageModel.setName(imageModel.getImageFile().getOriginalFilename());
 			
@@ -125,8 +129,13 @@ public class FileController implements HandlerExceptionResolver{
 	private boolean updateDB(UserInfo user, String newimageLocation) {
 		
 		try{
-			List<String> imagesLocations = getImageList(user);
-			imagesLocations.add(newimageLocation);
+			List<IBaseImage> imagesLocations = getImageList(user);
+			IBaseImage newImage = new IBaseImage();
+			newImage.setImageId(Integer.toString(user.getImageCount()+1));
+			newImage.setImageLocation(newimageLocation);
+			newImage.setLikes(0);
+			newImage.setImageTitle("imge number: "+Integer.toString(user.getImageCount()+1));
+			imagesLocations.add(newImage);
 			String imagesList = jsonizer.jsonize(imagesLocations);
 			user.setImagesList(imagesList);
 			user.setImageCount(user.getImageCount()+1);
@@ -138,15 +147,12 @@ public class FileController implements HandlerExceptionResolver{
 		return false;
 	}
 
-	private List<String> getImageList(UserInfo user) {
-		List<String> images = new ArrayList<String>();
+	private List<IBaseImage> getImageList(UserInfo user) {
+		ArrayList<IBaseImage> IBaseImages = null;
 		String imagesJSON = user.getImagesList();
 		try {
-			ArrayList<IBaseImage> IBaseImages = mapper.readValue(imagesJSON
+			IBaseImages = mapper.readValue(imagesJSON
 					, new TypeReference<ArrayList<IBaseImage>>(){});
-			for(IBaseImage image: IBaseImages){
-				images.add(image.getImageLocation());
-			}
 		} catch (JsonParseException e) {
 			e.printStackTrace();
 		} catch (JsonMappingException e) {
@@ -154,7 +160,7 @@ public class FileController implements HandlerExceptionResolver{
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		return images;
+		return IBaseImages;
 	}
 	
 	@SuppressWarnings({ "unchecked", "rawtypes" })
