@@ -58,7 +58,6 @@ public class JdbcUserInfoDAO implements UserInfoDAO{
 			ResultSet rs = ps.executeQuery();
 			if (rs.next()) {
 				userInfo = new UserInfo(
-					rs.getInt("id"),
 					rs.getString("userId"), 
 					rs.getString("password"),
 					rs.getString("friendList"),
