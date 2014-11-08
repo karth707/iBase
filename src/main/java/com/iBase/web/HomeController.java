@@ -54,7 +54,7 @@ public class HomeController {
     }
 	
 	private List<String> getImages(String userId2) {
-		UserInfo user = userInfoDAO.findById(userId);
+		UserInfo user = userInfoDAO.findById(userId2);
         imageLoader = new ImageLoader(user);
         return imageLoader.getImageLocations();
 	}

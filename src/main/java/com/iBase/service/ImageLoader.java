@@ -21,25 +21,35 @@ public class ImageLoader {
 	private ObjectMapper mapper;
 	private UserInfo user;
 	
-	public ImageLoader(UserInfo user) {
+	public ImageLoader(UserInfo user)
+    {
 		this.user = user;
 		mapper = new ObjectMapper();
 	}
 
-	public List<String> getImageLocations() {
+	public List<String> getImageLocations()
+    {
 		List<String> images = new ArrayList<String>();
 		String imagesJSON = user.getImagesList();
-		try {
+		try
+        {
 			ArrayList<IBaseImage> IBaseImages = mapper.readValue(imagesJSON
 					, new TypeReference<ArrayList<IBaseImage>>(){});
-			for(IBaseImage image: IBaseImages){
+			for(IBaseImage image: IBaseImages)
+            {
 				images.add(image.getImageLocation());
 			}
-		} catch (JsonParseException e) {
+		}
+        catch (JsonParseException e)
+        {
 			e.printStackTrace();
-		} catch (JsonMappingException e) {
+		}
+        catch (JsonMappingException e)
+        {
 			e.printStackTrace();
-		} catch (IOException e) {
+		}
+        catch (IOException e)
+        {
 			e.printStackTrace();
 		}
 		return images;

@@ -7,6 +7,7 @@
         <link rel="stylesheet" type="text/css" href="<c:url value="/Resources/MyTheme/CSS/styles.css" />">
     </head>
     <body>
+    <sec:authorize access="hasRole('ROLE_USER')">
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="collapse navbar-collapse navHeaderCollapse">
@@ -24,7 +25,24 @@
         <!-- CHANGE NAME TO USER'S NAME-->
         <h4 style="display:inline-block;">Name</h4>
         <!-- CHANGE USERNAME TO USER'S USERNAME-->
-        <h4 style="display:inline-block; float:right">Logged in as <em>username</em> <a href="logout.html">Log Out</a></h4>
+        <h4 style="display:inline-block; float:right">Logged in as <em><c:out value="${userName}"/></em></h4>
+
+        <!-- For login user -->
+        <c:url value="/j_spring_security_logout" var="logoutUrl" />
+        <form action="${logoutUrl}" method="post" id="logoutForm">
+            <input type="hidden" name="${_csrf.parameterName}"
+                   value="${_csrf.token}" />
+        </form>
+        <script>
+            function formSubmit() {
+                document.getElementById("logoutForm").submit();
+            }
+        </script>
+        <c:if test="${pageContext.request.userPrincipal.name != null}">
+            <h4 style="display:inline-block; float:right">
+                <a href="javascript:formSubmit()"> Logout</a>
+            </h4>
+        </c:if>
     </div>
     <div class="container" style="width:50%;text-align:center">
         <div class="row">
@@ -49,4 +67,5 @@
          </form:form>
          -->
     </body>
+    </sec:authorize>
 </html>
