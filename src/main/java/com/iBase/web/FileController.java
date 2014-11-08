@@ -2,7 +2,10 @@ package com.iBase.web;
 
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -10,6 +13,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.codehaus.jackson.JsonParseException;
+import org.codehaus.jackson.map.JsonMappingException;
+import org.codehaus.jackson.map.ObjectMapper;
+import org.codehaus.jackson.type.TypeReference;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -27,7 +34,11 @@ import org.springframework.web.multipart.MaxUploadSizeExceededException;
 import org.springframework.web.servlet.HandlerExceptionResolver;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.iBase.domain.IBaseImage;
 import com.iBase.domain.ImageFile;
+import com.iBase.domain.UserInfo;
+import com.iBase.service.db.UserInfoDAO;
+import com.iBase.service.util.Jsonizer;
 import com.iBase.web.validators.ImageFileValidator;
 
 @Controller
@@ -35,9 +46,14 @@ import com.iBase.web.validators.ImageFileValidator;
 public class FileController implements HandlerExceptionResolver{
 
 	protected final Log logger = LogFactory.getLog(getClass());
+	private ObjectMapper mapper = new ObjectMapper();
+	private Jsonizer jsonizer = new Jsonizer();
 
 	@Autowired
 	ImageFileValidator validator;
+	
+	@Autowired
+	private UserInfoDAO userInfoDAO;
 	
 	@InitBinder
 	private void initBinder(WebDataBinder binder){
@@ -61,17 +77,29 @@ public class FileController implements HandlerExceptionResolver{
 	
 	@RequestMapping(method = RequestMethod.POST)
 	public String imageFileUploaded(@ModelAttribute(value="imageFile") ImageFile imageModel
+			, @ModelAttribute(value="userName") String userName, Model model
 			, BindingResult result){
 
 		if(!result.hasErrors()){
 			FileOutputStream outputStream = null;
 			String rootPath = System.getProperty("catalina.home");
-			File dir = new File(rootPath + File.separator + "images");
+			File dir = new File(rootPath + File.separator + "images" + File.separator + userName);
 			if (!dir.exists())
 				dir.mkdirs();
-			File imageFile = new File(dir.getAbsolutePath()
-					+File.separator + imageModel.getImageFile().getOriginalFilename());
 			
+			UserInfo user = getUserInfo(userName);
+			
+			String newimageLocation = dir.getAbsolutePath()
+					+File.separator 
+					+ Integer.toString(user.getImageCount()+1);
+			
+			boolean update = updateDB(user, newimageLocation);
+			if(update==false){
+				model.addAttribute("uploadLimit", "You have reached Maximum uploads");
+				return "upload";
+			}
+			
+			File imageFile = new File(newimageLocation);
 			imageModel.setName(imageModel.getImageFile().getOriginalFilename());
 			
 			try {
@@ -89,6 +117,46 @@ public class FileController implements HandlerExceptionResolver{
 		}
 	}
 
+	private UserInfo getUserInfo(String userName) {
+		UserInfo user = userInfoDAO.findById(userName);
+		return user;
+	}
+
+	private boolean updateDB(UserInfo user, String newimageLocation) {
+		
+		try{
+			List<String> imagesLocations = getImageList(user);
+			imagesLocations.add(newimageLocation);
+			String imagesList = jsonizer.jsonize(imagesLocations);
+			user.setImagesList(imagesList);
+			user.setImageCount(user.getImageCount()+1);
+			userInfoDAO.updateTable(user);
+			return true;
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return false;
+	}
+
+	private List<String> getImageList(UserInfo user) {
+		List<String> images = new ArrayList<String>();
+		String imagesJSON = user.getImagesList();
+		try {
+			ArrayList<IBaseImage> IBaseImages = mapper.readValue(imagesJSON
+					, new TypeReference<ArrayList<IBaseImage>>(){});
+			for(IBaseImage image: IBaseImages){
+				images.add(image.getImageLocation());
+			}
+		} catch (JsonParseException e) {
+			e.printStackTrace();
+		} catch (JsonMappingException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return images;
+	}
+	
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public ModelAndView resolveException(HttpServletRequest request,
 			HttpServletResponse response, Object handler, Exception ex) {
@@ -101,5 +169,13 @@ public class FileController implements HandlerExceptionResolver{
 		}
 		model.put("imageFile", new ImageFile());
 		return new ModelAndView("/upload", (Map) model);
+	}
+	
+	public UserInfoDAO getUserInfoDAO() {
+		return userInfoDAO;
+	}
+
+	public void setUserInfoDAO(UserInfoDAO userInfoDAO) {
+		this.userInfoDAO = userInfoDAO;
 	}
 }

@@ -6,13 +6,15 @@ public class UserInfo {
 	private String password;
 	private String friendList;
 	private String imagesList;
+	private int imageCount;
 	
 	public UserInfo(String userId, String password
-			, String friendList, String imagesList){
+			, String friendList, String imagesList, int imageCount){
 		this.friendList = friendList;
 		this.imagesList = imagesList;
 		this.password = password;
 		this.userId = userId;
+		this.imageCount = imageCount;
 	}
 	
 	public String getUserId() {
@@ -38,6 +40,14 @@ public class UserInfo {
 	}
 	public void setFriendList(String friendList) {
 		this.friendList = friendList;
+	}
+
+	public int getImageCount() {
+		return imageCount;
+	}
+
+	public void setImageCount(int imageCount) {
+		this.imageCount = imageCount;
 	}
 	
 }

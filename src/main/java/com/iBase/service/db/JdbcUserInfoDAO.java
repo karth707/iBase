@@ -19,7 +19,7 @@ public class JdbcUserInfoDAO implements UserInfoDAO{
 	
 	public void insert(UserInfo userInfo) {
 		String sql = "INSERT INTO userInfo " +
-				"(userId, password, friendList, imagesList) VALUES (?, ?, ?, ?)";
+				"(userId, password, friendList, imagesList, imageCount) VALUES (?, ?, ?, ?, ?)";
 		Connection conn = null;
 		
 		try {
@@ -29,6 +29,7 @@ public class JdbcUserInfoDAO implements UserInfoDAO{
 			ps.setString(2, userInfo.getPassword());
 			ps.setString(3, userInfo.getFriendList());
 			ps.setString(4, userInfo.getImagesList());
+			ps.setInt(5, userInfo.getImageCount());
 			ps.executeUpdate();
 			ps.close();
  
@@ -44,6 +45,31 @@ public class JdbcUserInfoDAO implements UserInfoDAO{
 		}
 	}
 
+	public void updateTable(UserInfo userInfo){
+		String sql = "UPDATE userInfo " +
+				"SET imagesList = ?, imageCount = ? WHERE userId = ?";
+		Connection conn = null;
+		try {
+			conn = dataSource.getConnection();
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setString(1, userInfo.getImagesList());
+			ps.setInt(2, userInfo.getImageCount());
+			ps.setString(3, userInfo.getUserId());
+			ps.executeUpdate();
+			ps.close();
+ 
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+ 
+		} finally {
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {}
+			}
+		}
+	}
+	
 	public UserInfo findById(String userId) {
 		
 		String sql = "SELECT * FROM userInfo WHERE userId = ?";
@@ -61,7 +87,8 @@ public class JdbcUserInfoDAO implements UserInfoDAO{
 					rs.getString("userId"), 
 					rs.getString("password"),
 					rs.getString("friendList"),
-					rs.getString("imagesList")
+					rs.getString("imagesList"),
+					rs.getInt("imageCount")
 				);
 			}
 			rs.close();

@@ -5,8 +5,8 @@
   <head>
       <title><fmt:message key="title"/></title>
       <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-      <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/bootstrap.min.css"/>
-      <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/styles.css"/>
+      <link href="<c:url value="/resources/css/styles.css" />" rel="stylesheet" type="text/css">
+      <link href="<c:url value="/resources/css/bootstrap.min.css" />" rel="stylesheet" type="text/bootstrap.min.css">
   </head>
   <body>
   <sec:authorize access="hasRole('ROLE_USER')">
@@ -24,7 +24,7 @@
 
   <div class="container">
       <!-- CHANGE IMG TO USER PROFILE PIC-->
-      <img src="${pageContext.request.contextPath}/resources/images/sparky1.jpg" alt="Sparky" style="width:100px;height:100px;display:inline-block">
+      <img src="/resources/images/sparky1.jpg" alt="Sparky" style="width:100px;height:100px;display:inline-block">
       <!-- CHANGE NAME TO USER'S NAME-->
       <h4 style="display:inline-block;">Name</h4>
       <h4 style="display:inline-block; float:right">Logged in as <em><c:out value="${userName}"/></em></h4>
