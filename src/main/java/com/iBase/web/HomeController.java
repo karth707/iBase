@@ -34,6 +34,7 @@ public class HomeController {
         //get the images
         List<String> imagesLocation = getImages(userId);
         log.info(imagesLocation);
+        model.addAttribute("imageList", imagesLocation);
         
         //add to the model to display on page
         
