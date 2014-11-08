@@ -11,6 +11,10 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -27,7 +31,7 @@ import com.iBase.domain.ImageFile;
 import com.iBase.web.validators.ImageFileValidator;
 
 @Controller
-@RequestMapping("/upload.htm")
+@RequestMapping("/upload")
 public class FileController implements HandlerExceptionResolver{
 
 	protected final Log logger = LogFactory.getLog(getClass());
@@ -44,7 +48,14 @@ public class FileController implements HandlerExceptionResolver{
 	public String getForm(Model model) {
 		ImageFile imageModel = new ImageFile();
 		model.addAttribute("imageFile", imageModel);
-		return "upload";
+		Authentication auth = SecurityContextHolder.getContext()
+				.getAuthentication();
+		if (!(auth instanceof AnonymousAuthenticationToken)) {
+			UserDetails userDetail = (UserDetails) auth.getPrincipal();
+			model.addAttribute("userName", userDetail.getUsername());
+			return "upload";
+		}
+		return "403";
 	}
 	
 	@RequestMapping(method = RequestMethod.POST)
