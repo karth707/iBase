@@ -42,7 +42,7 @@ h4 {
 </style>
   </head>
   
-  <body onload='document.loginForm.username.focus();' background="<c:url value="/resources/images/background_1.jpg" />">
+  <body onload='document.loginForm.username.focus();' background="<c:url value="/resources/images/background_2.jpg" />">
    	<div style="text-align:center">
    	<br>
    	<br>
