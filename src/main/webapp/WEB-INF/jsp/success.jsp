@@ -5,11 +5,27 @@
 
 <html>
 <head>
+<style>
+#login-box {
+	width: 300px;
+	padding: 20px;
+	margin: 100px auto;
+	background: #fff;
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+	border: 1px solid #000;
+}
+</style>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Registration Success</title>
 </head>
-<body>
-    <div align="center">
+<body background="<c:url value="/resources/images/background_1.jpg" />">
+<br>
+<br>
+<br>
+<br>
+<br>
+    <div align="center" id="login-box">
         <table border="0">
             <tr>
                 <td colspan="2" align="center"><h2>Registration Succeeded!</h2></td>

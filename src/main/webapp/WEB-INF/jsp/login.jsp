@@ -36,10 +36,13 @@
 </style>
   </head>
   
-  <body onload='document.loginForm.username.focus();'>
-    <h1><fmt:message key="heading"/></h1>
-    <p><fmt:message key="login"/> <c:out value="${now}"/></p>
-	
+  <body onload='document.loginForm.username.focus();' background="<c:url value="/resources/images/background_1.jpg" />">
+   	<div style="text-align:center">
+   	<br>
+   	<br>
+         <h1><font color="White"><fmt:message key="heading"/></font></h1>
+    	 <p><font color="White"><fmt:message key="login"/> <c:out value="${now}"/></font></p>
+	</div>
 	<div id="login-box">
  
 		<h3>Login with Username and Password</h3> 
@@ -65,7 +68,7 @@
 				  value="submit" /></td>
 			</tr>
 			<tr>
-				<p>Signup <a href="<c:url value="/signup"/>">here!</a> </p> 
+				<p>New User? Signup<a href="<c:url value="/signup"/>"><font color="Green"> Here!</font></a></p> 
 			</tr>
 		  </table>
 		  <input type="hidden" name="${_csrf.parameterName}"

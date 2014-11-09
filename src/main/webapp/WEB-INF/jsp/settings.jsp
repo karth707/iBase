@@ -20,7 +20,7 @@
 </div>
 <div class="container" style="margin-top:100px">
     <img src="<c:url value="/resources/images/sparky1.jpg" />" alt="Sparky" style="width:100px;height:100px;display:inline-block">
-    <h4 style="display:inline-block; float:right">Logged in as <em>username</em></h4> 
+    <h4 style="display:inline-block; float:right">Logged in as <em>${userName}</em></h4> 
     <!-- For login user -->
     <c:url value="/j_spring_security_logout" var="logoutUrl" />
       <form action="${logoutUrl}" method="post" id="logoutForm">

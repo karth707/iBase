@@ -108,7 +108,7 @@ public class FileController implements HandlerExceptionResolver{
 			
 			boolean update = updateDB(user, dbLocation);
 			if(update==false){
-				model.addAttribute("uploadLimit", "You have reached Maximum uploads");
+				model.addAttribute("uploadLimit", "Sorry! DataBase update Error!");
 				return "upload";
 			}
 			File imageFile = new File(newimageLocation);
@@ -164,6 +164,9 @@ public class FileController implements HandlerExceptionResolver{
 	private List<IBaseImage> getImageList(UserInfo user) {
 		ArrayList<IBaseImage> iBaseImages = null;
 		String imagesJSON = user.getImagesList();
+		if(imagesJSON==null){
+			return iBaseImages;
+		}
 		try {
 			iBaseImages = mapper.readValue(imagesJSON
 					, new TypeReference<ArrayList<IBaseImage>>(){});
