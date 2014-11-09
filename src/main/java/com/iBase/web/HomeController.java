@@ -39,7 +39,8 @@ public class HomeController {
         //add to the model to display on page
         Authentication auth = SecurityContextHolder.getContext()
                 .getAuthentication();
-        if (!(auth instanceof AnonymousAuthenticationToken)) {
+        if (!(auth instanceof AnonymousAuthenticationToken))
+        {
             UserDetails userDetail = (UserDetails) auth.getPrincipal();
             model.addAttribute("userName", userDetail.getUsername());
             return "home";
