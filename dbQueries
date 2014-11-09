@@ -1,3 +1,7 @@
+//Execute the following SQL Statements
+
+CREATE DATABASE iBaseDB
+
 CREATE TABLE `userInfo` (
   `userId` varchar(45) NOT NULL,
   `password` varchar(45) NOT NULL,
