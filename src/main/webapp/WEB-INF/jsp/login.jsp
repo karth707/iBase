@@ -33,6 +33,12 @@
 	-moz-border-radius: 2px;
 	border: 1px solid #000;
 }
+h1 {
+    text-shadow: 3px 3px 3px #000000;
+}
+h4 {
+	text-shadow: 3px 3px 3px #000000;
+}
 </style>
   </head>
   
@@ -41,7 +47,7 @@
    	<br>
    	<br>
          <h1><font color="White"><fmt:message key="heading"/></font></h1>
-    	 <p><font color="White"><fmt:message key="login"/> <c:out value="${now}"/></font></p>
+    	 <h4><font color="White"><fmt:message key="login"/> <c:out value="${now}"/></font></h4>
 	</div>
 	<div id="login-box">
  
