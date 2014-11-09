@@ -90,7 +90,8 @@ public class FileController implements HandlerExceptionResolver{
 			FileOutputStream outputStream = null;
 			String rootPath = System.getProperty("catalina.home");
 			File dir = new File(rootPath + File.separator 
-					+ "webapps" + File.separator + "iBase" + File.separator
+					+ "webapps" + File.separator + "iBase" + File.separator 
+					+ "resources" + File.separator 
 					+ "images" + File.separator + userName);
 			if (!dir.exists())
 				dir.mkdirs();
@@ -100,8 +101,8 @@ public class FileController implements HandlerExceptionResolver{
 					+ File.separator 
 					+ Integer.toString(user.getImageCount()+1)+".jpg";
 			
-			String dbLocation = "/webapps" + File.separator + "iBase"
-					+ "images" + File.separator + userName
+			String dbLocation = File.separator + "resources" + File.separator 
+					+  "images" + File.separator + userName
 					+ File.separator 
 					+ Integer.toString(user.getImageCount()+1)+".jpg";
 			
@@ -139,6 +140,9 @@ public class FileController implements HandlerExceptionResolver{
 			List<IBaseImage> imagesLocations = getImageList(user);
 			if(imagesLocations==null){
 				imagesLocations = new ArrayList<IBaseImage>();
+			}
+			if(user.getImageCount()==10){
+				return false;
 			}
 			IBaseImage newImage = new IBaseImage();
 			newImage.setImageId(Integer.toString(user.getImageCount()+1));

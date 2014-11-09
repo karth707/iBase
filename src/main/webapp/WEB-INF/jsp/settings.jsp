@@ -11,9 +11,9 @@
     <div class="container">
         <div class="collapse navbar-collapse navHeaderCollapse">
             <ul class="nav navbar-nav navbar-left navbar">
-                <li><a href="<c:url value="/home.htm"/>">Home</a></li>
-                <li><a href="<c:url value="/upload.htm"/>">Upload</a></li>
-                <li class="active"><a href="<c:url value="/settings.htm"/>">Settings</a></li>
+                <li><a href="<c:url value="/home"/>">Home</a></li>
+                <li><a href="<c:url value="/upload"/>">Upload</a></li>
+                <li class="active"><a href="<c:url value="/settings"/>">Settings</a></li>
             </ul>
         </div>
     </div>

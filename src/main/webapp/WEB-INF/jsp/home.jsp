@@ -22,14 +22,11 @@
       </div>
   </div>
 	<sec:authorize access="hasRole('ROLE_USER')">
-  <div class="container" style="margin-top:100px">
-      <!-- CHANGE IMG TO USER PROFILE PIC-->
-      <img src="<c:url value="/resources/images/sparky1.jpg" />" alt="Sparky" style="width:100px;height:100px;display:inline-block">
-      <!-- CHANGE NAME TO USER'S NAME-->
-      <h4 style="display:inline-block; float:right">Logged in as <em><c:out value="${userName}"/></em></h4>
-
-      <!-- For login user -->
-      <c:url value="/j_spring_security_logout" var="logoutUrl" />
+ <div class="container" style="margin-top:100px">
+    <img src="<c:url value="/resources/images/sparky1.jpg" />" alt="Sparky" style="width:100px;height:100px;display:inline-block">
+    <h4 style="display:inline-block; float:right">Logged in as <em>${userName}</em></h4> 
+    <!-- For login user -->
+    <c:url value="/j_spring_security_logout" var="logoutUrl" />
       <form action="${logoutUrl}" method="post" id="logoutForm">
           <input type="hidden" name="${_csrf.parameterName}"
                  value="${_csrf.token}" />
@@ -44,15 +41,15 @@
               <a href="javascript:formSubmit()"> Logout</a>
           </p>
       </c:if>
-  </div>
+</div>
 
   <h1 style="color: #6699FF; text-align:center"><fmt:message key="photoHeading"/></h1>
   <div align="center">
   		<c:out value="${imagesMessage}"/>
   		<c:if test="${not empty imageList}">
   			<c:forEach items="${imageList}" var="image">
-  				<div align="center" style="width:400px; padding:10px; border: 5px solid gray; display:inline-block">
-  				<img src="<c:url value="${image}"/>"/ >
+  				<div align="center" style="width:440px; padding:7px; border: 5px solid gray; display:inline-block">
+  				<img src="<c:url value="${image}"/>" style="width:400px" />
   				</div>
   			</c:forEach>
   		</c:if> 
