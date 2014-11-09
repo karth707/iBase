@@ -32,7 +32,7 @@
 	<bean id="validator" class="com.iBase.web.validators.ImageFileValidator" />
 
 	<!-- URLS -->	
-	<!-- <bean name="/home.htm" class="com.iBase.web.HomeController">
+	<!--<bean name="/home.htm" class="com.iBase.web.HomeController">
 	    <property name="userInfoDAO" ref="userInfoDAO" />
 	</bean> -->
 	<!-- <bean name="/upload.htm" class="com.iBase.web.FileController">
@@ -55,6 +55,4 @@
 		<property name="suffix" value=".jsp"></property>
 	</bean>
 
-    <mvc:annotation-driven/>
-    <mvc:resources mapping="/resources/**" location="Resources/"/>
 </beans>

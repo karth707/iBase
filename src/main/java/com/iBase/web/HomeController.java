@@ -1,6 +1,5 @@
 package com.iBase.web;
 
-import java.util.Date;
 import java.util.List;
 
 import org.apache.commons.logging.Log;
@@ -22,48 +21,44 @@ import com.iBase.service.db.UserInfoDAO;
 @Controller
 public class HomeController {
 
-	protected final Log log = LogFactory.getLog(getClass());
-	private String userId = "test1@asu.edu";
-	ImageLoader imageLoader;
-	
-	@Autowired
-	private UserInfoDAO userInfoDAO;
+    protected final Log log = LogFactory.getLog(getClass());
+    private String userId = "test1@asu.edu";
+    ImageLoader imageLoader;
 
-	@RequestMapping(value={"/", "/home*"}, method = RequestMethod.GET)
+    @Autowired
+    private UserInfoDAO userInfoDAO;
+
+    @RequestMapping(value="/home", method = RequestMethod.GET)
     public String handleHomeRequest(Model model){
-    	
-		String now = (new Date()).toString();
-        log.info("Returning home to "+ userId + " view at " + now);
-        model.addAttribute("now", now);
-        
+
         //get the images
         List<String> imagesLocation = getImages(userId);
         log.info(imagesLocation);
         model.addAttribute("imageList", imagesLocation);
-        
+
         //add to the model to display on page
         Authentication auth = SecurityContextHolder.getContext()
-				.getAuthentication();
-		if (!(auth instanceof AnonymousAuthenticationToken)) {
-			UserDetails userDetail = (UserDetails) auth.getPrincipal();
-			model.addAttribute("userName", userDetail.getUsername());
-			return "home";
-		}
-        
+                .getAuthentication();
+        if (!(auth instanceof AnonymousAuthenticationToken)) {
+            UserDetails userDetail = (UserDetails) auth.getPrincipal();
+            model.addAttribute("userName", userDetail.getUsername());
+            return "home";
+        }
+
         return "403";
     }
-	
-	private List<String> getImages(String userId2) {
-		UserInfo user = userInfoDAO.findById(userId2);
+
+    private List<String> getImages(String userId2) {
+        UserInfo user = userInfoDAO.findById(userId2);
         imageLoader = new ImageLoader(user);
         return imageLoader.getImageLocations();
-	}
+    }
 
-	public UserInfoDAO getUserInfoDAO() {
-		return userInfoDAO;
-	}
+    public UserInfoDAO getUserInfoDAO() {
+        return userInfoDAO;
+    }
 
-	public void setUserInfoDAO(UserInfoDAO userInfoDAO) {
-		this.userInfoDAO = userInfoDAO;
-	}
+    public void setUserInfoDAO(UserInfoDAO userInfoDAO) {
+        this.userInfoDAO = userInfoDAO;
+    }
 }

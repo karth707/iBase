@@ -32,7 +32,8 @@ import com.iBase.web.validators.ImageFileValidator;
 
 @Controller
 @RequestMapping("/upload")
-public class FileController implements HandlerExceptionResolver{
+public class FileController implements HandlerExceptionResolver
+{
 
 	protected final Log logger = LogFactory.getLog(getClass());
 
@@ -89,7 +90,8 @@ public class FileController implements HandlerExceptionResolver{
 
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public ModelAndView resolveException(HttpServletRequest request,
-			HttpServletResponse response, Object handler, Exception ex) {
+			HttpServletResponse response, Object handler, Exception ex)
+    {
 		Map<Object, Object> model = new HashMap<Object, Object>();
 		if (ex instanceof MaxUploadSizeExceededException){
 			model.put("errors", "File size should be less then "+

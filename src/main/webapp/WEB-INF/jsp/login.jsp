@@ -34,17 +34,17 @@
 	border: 1px solid #000;
 }
 </style>
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
   </head>
   
   <body onload='document.loginForm.username.focus();'>
-    <h1><fmt:message key="heading"/></h1>
-    <p><fmt:message key="login"/> <c:out value="${now}"/></p>
+    <h1 style="text-align: center; color: limegreen"><fmt:message key="heading"/></h1>
 	
 	
-	<h1>Spring Security Login Form (Database Authentication)</h1>
+	<h4 style="text-align: center; color: limegreen">Spring Security Login Form (Database Authentication)</h4>
 
 	<div id="login-box">
-		<h3>Login with Username and Password</h3>
+		<h5>Login with Username and Password</h5>
 		<c:if test="${not empty error}">
 			<div class="error">${error}</div>
 		</c:if>

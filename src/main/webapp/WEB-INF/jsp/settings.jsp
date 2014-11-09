@@ -4,8 +4,88 @@
 <html>
 <head>
     <title><fmt:message key="title"/></title>
-    <link rel="stylesheet" href="<c:url value="/Resources/MyTheme/CSS/bootstrap.min.css" />">
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/Resources/MyTheme/CSS/styles.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
+    <style>
+        body {
+            margin-top: 60px;
+            margin-bottom: 80px;
+        }
+
+        .page-header {
+            margin-top: 0;
+        }
+
+        .panel-body {
+            padding-top: 0;
+        }
+
+        .featuredImg {
+            margin-bottom: 15px;
+        }
+
+        .JakeHelloWorldTitle {
+            text-align: center;
+        }
+
+        .WarningPotentialEmailersText {
+            color:red;
+        }
+
+        #jake {
+            margin: 3px;
+            margin-right:20px;
+            width: 200px;
+            height: 300px;
+            float: left;
+        }
+
+        .smrow {
+            margin-top: 50px;
+        }
+
+        div.c-wrapper{
+            padding-left:0px;
+            padding-right:0px;
+            margin:auto;
+            margin-bottom:20px;
+            padding-top: 40px;
+            padding-bottom: 40px;
+        }
+
+
+
+        .jakebuttons {
+            margin-top: 60px;
+            margin-left: 20px;
+        }
+
+        .jakebutton {
+            padding-top: 10px;
+            padding-bottom: 10px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            height: 50px;
+            width: 100px;
+        }
+
+        .welcome-header
+        {
+            color: green;
+        }
+
+        .jakeLabel{
+            display: inline-block;
+            float: left;
+            clear: left;
+            width: 250px;
+            text-align: right;
+        }
+        .jakeInput {
+            display: inline-block;
+            float: left;
+        }
+
+    </style>
 </head>
 <body>
 <sec:authorize access="hasRole('ROLE_USER')">

@@ -16,37 +16,37 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class LoginController {
 
-	protected final Log logger = LogFactory.getLog(getClass());
+    protected final Log logger = LogFactory.getLog(getClass());
 
-	@RequestMapping(value = "/login", method = RequestMethod.GET)
-	public String login(
-			@RequestParam(value = "error", required = false) String error,
-			@RequestParam(value = "logout", required = false) String logout,
-			Model model) {
+    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    public String login(
+            @RequestParam(value = "error", required = false) String error,
+            @RequestParam(value = "logout", required = false) String logout,
+            Model model) {
 
-		if (error != null) {
-			model.addAttribute("error", "Invalid username and password!");
-		}
+        if (error != null) {
+            model.addAttribute("error", "Invalid username and password!");
+        }
 
-		if (logout != null) {
-			model.addAttribute("msg", "You've been logged out successfully.");
-		}
-		return "login";
-	}
+        if (logout != null) {
+            model.addAttribute("msg", "You've been logged out successfully.");
+        }
+        return "login";
+    }
 
-	// for 403 access denied page
-	@RequestMapping(value = "/403", method = RequestMethod.GET)
-	public ModelAndView accesssDenied() {
+    // for 403 access denied page
+    @RequestMapping(value = "/403", method = RequestMethod.GET)
+    public ModelAndView accessDenied() {
 
-		ModelAndView model = new ModelAndView();
-		// check if user is login
-		Authentication auth = SecurityContextHolder.getContext()
-				.getAuthentication();
-		if (!(auth instanceof AnonymousAuthenticationToken)) {
-			UserDetails userDetail = (UserDetails) auth.getPrincipal();
-			model.addObject("userName", userDetail.getUsername());
-		}
-		model.setViewName("403");
-		return model;
-	}
+        ModelAndView model = new ModelAndView();
+        // check if user is login
+        Authentication auth = SecurityContextHolder.getContext()
+                .getAuthentication();
+        if (!(auth instanceof AnonymousAuthenticationToken)) {
+            UserDetails userDetail = (UserDetails) auth.getPrincipal();
+            model.addObject("userName", userDetail.getUsername());
+        }
+        model.setViewName("403");
+        return model;
+    }
 }

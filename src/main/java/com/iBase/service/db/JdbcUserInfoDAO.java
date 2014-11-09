@@ -44,16 +44,17 @@ public class JdbcUserInfoDAO implements UserInfoDAO{
 		}
 	}
 
-	public UserInfo findById(String userId) {
-		
-		String sql = "SELECT * FROM userInfo WHERE userId = ?";
+	public UserInfo findById(String userId2)
+    {
+		String sql;
+        sql = String.format("SELECT * FROM userInfo WHERE userId = \' %s \'", userId2);
 		 
 		Connection conn = null;
 		 
 		try {
 			conn = dataSource.getConnection();
 			PreparedStatement ps = conn.prepareStatement(sql);
-			ps.setString(1, userId);
+			ps.setString(1, userId2);
 			UserInfo userInfo = null;
 			ResultSet rs = ps.executeQuery();
 			if (rs.next()) {
