@@ -1,0 +1,22 @@
+CREATE TABLE `userInfo` (
+  `userId` varchar(45) NOT NULL,
+  `password` varchar(45) NOT NULL,
+  `friendList` text,
+  `imagesList` text,
+  `enabled` tinyint(4) NOT NULL DEFAULT '1',
+  `imageCount` int(11) DEFAULT '0',
+  `firstName` varchar(20) DEFAULT NULL,
+  `lastName` varchar(20) DEFAULT NULL,
+  `profilePic` text,
+  PRIMARY KEY (`userId`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE `user_roles` (
+  `user_role_id` int(11) NOT NULL AUTO_INCREMENT,
+  `userId` varchar(45) NOT NULL,
+  `ROLE` varchar(45) NOT NULL,
+  PRIMARY KEY (`user_role_id`),
+  UNIQUE KEY `uni_username_role` (`ROLE`,`userId`),
+  KEY `fk_username_idx` (`userId`),
+  CONSTRAINT `fk_username` FOREIGN KEY (`userId`) REFERENCES `userInfo` (`userId`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;

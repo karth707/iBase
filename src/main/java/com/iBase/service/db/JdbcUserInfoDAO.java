@@ -12,6 +12,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.ResultSetExtractor;
 
 import com.iBase.domain.UserInfo;
+import com.iBase.domain.UserRole;
 
 public class JdbcUserInfoDAO implements UserInfoDAO{
 	
@@ -29,12 +30,22 @@ public class JdbcUserInfoDAO implements UserInfoDAO{
 //	}
 	
 	public void insert(UserInfo userInfo){
-		String sql = "INSERT INTO userInfo " +
-				"(userId, password, friendList, imagesList, imageCount) VALUES (?, ?, ?, ?, ?)";
+		String sql = "INSERT INTO userInfo "
+				+ "(userId, password, friendList, imagesList, imageCount, firstName, lastName) "
+				+ "VALUES (?, ?, ?, ?, ?, ?, ?)";
+		logger.info("Running query: " + sql);
 		jdbcTemplate.update(sql, userInfo.getUserId(), userInfo.getPassword()
-				, userInfo.getFriendList(), userInfo.getImagesList(), userInfo.getImageCount());
+				, userInfo.getFriendList(), userInfo.getImagesList(), userInfo.getImageCount()
+				, userInfo.getFirstName(), userInfo.getLastName());
 	}
 	
+	public void insertUserRole(UserRole userRoles){
+		String sql = "INSERT INTO user_roles " 
+					+ "(userId, ROLE)"
+					+ "VALUES (?, ?)";
+		logger.info("Running query: " + sql);
+		jdbcTemplate.update(sql, userRoles.getUserId(), userRoles.getRole());
+	}
 	
 //	public void insert(UserInfo userInfo) {
 //		String sql = "INSERT INTO userInfo " +
@@ -68,6 +79,7 @@ public class JdbcUserInfoDAO implements UserInfoDAO{
 	
 		String sql = "UPDATE userInfo " +
 				"SET imagesList = ?, imageCount = ? WHERE userId = ?";
+		logger.info("Running query: " + sql);
 		jdbcTemplate.update(sql, userInfo.getImagesList()
 				, userInfo.getImageCount(), userInfo.getUserId());
 	}
@@ -100,11 +112,10 @@ public class JdbcUserInfoDAO implements UserInfoDAO{
 	
 	public UserInfo findById(String userId) {
 		String sql = "SELECT * FROM userInfo WHERE userId = "+"\""+userId+"\"";
-		logger.info(sql);
+		logger.info("Running query: " + sql);
 		return jdbcTemplate.query(sql, new ResultSetExtractor<UserInfo>(){
 			public UserInfo extractData(ResultSet rs) throws SQLException,
 					DataAccessException {
-				logger.info("inside the SQL query!");
 				if(rs.next()){
 					UserInfo userInfo = new UserInfo(rs.getString("userId")
 							, rs.getString("password")

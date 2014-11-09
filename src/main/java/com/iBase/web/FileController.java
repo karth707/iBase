@@ -89,16 +89,23 @@ public class FileController implements HandlerExceptionResolver{
 		if(!result.hasErrors()){
 			FileOutputStream outputStream = null;
 			String rootPath = System.getProperty("catalina.home");
-			File dir = new File(rootPath + File.separator + "images" + File.separator + userName);
+			File dir = new File(rootPath + File.separator 
+					+ "webapps" + File.separator + "iBase" + File.separator
+					+ "images" + File.separator + userName);
 			if (!dir.exists())
 				dir.mkdirs();
 			UserInfo user = getUserInfo(userName);
 
 			String newimageLocation = dir.getAbsolutePath()
-					+File.separator 
-					+ Integer.toString(user.getImageCount()+1);
+					+ File.separator 
+					+ Integer.toString(user.getImageCount()+1)+".jpg";
 			
-			boolean update = updateDB(user, newimageLocation);
+			String dbLocation = "/webapps" + File.separator + "iBase"
+					+ "images" + File.separator + userName
+					+ File.separator 
+					+ Integer.toString(user.getImageCount()+1)+".jpg";
+			
+			boolean update = updateDB(user, dbLocation);
 			if(update==false){
 				model.addAttribute("uploadLimit", "You have reached Maximum uploads");
 				return "upload";
@@ -130,6 +137,9 @@ public class FileController implements HandlerExceptionResolver{
 		
 		try{
 			List<IBaseImage> imagesLocations = getImageList(user);
+			if(imagesLocations==null){
+				imagesLocations = new ArrayList<IBaseImage>();
+			}
 			IBaseImage newImage = new IBaseImage();
 			newImage.setImageId(Integer.toString(user.getImageCount()+1));
 			newImage.setImageLocation(newimageLocation);
@@ -148,10 +158,10 @@ public class FileController implements HandlerExceptionResolver{
 	}
 
 	private List<IBaseImage> getImageList(UserInfo user) {
-		ArrayList<IBaseImage> IBaseImages = null;
+		ArrayList<IBaseImage> iBaseImages = null;
 		String imagesJSON = user.getImagesList();
 		try {
-			IBaseImages = mapper.readValue(imagesJSON
+			iBaseImages = mapper.readValue(imagesJSON
 					, new TypeReference<ArrayList<IBaseImage>>(){});
 		} catch (JsonParseException e) {
 			e.printStackTrace();
@@ -160,7 +170,7 @@ public class FileController implements HandlerExceptionResolver{
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		return IBaseImages;
+		return iBaseImages;
 	}
 	
 	@SuppressWarnings({ "unchecked", "rawtypes" })

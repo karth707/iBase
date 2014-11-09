@@ -3,8 +3,8 @@
 <html>
 <head>
     <title><fmt:message key="title"/></title>
-    <link rel="stylesheet" href="<c:url value="/Resources/MyTheme/CSS/bootstrap.min.css" />">
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/Resources/MyTheme/CSS/styles.css">
+    <link href="<c:url value="/resources/css/styles.css" />" rel="stylesheet" type="text/css">
+      <link href="<c:url value="/resources/css/bootstrap.min.css" />" rel="stylesheet" type="text/bootstrap.min.css">
 </head>
 <body>
 <div class="navbar navbar-inverse navbar-fixed-top">
@@ -18,10 +18,25 @@
         </div>
     </div>
 </div>
-<div class="container">
-    <img src="${pageContext.request.contextPath}/Resources/MyTheme/Images/sparky1.jpg" alt="Sparky" style="width:100px;height:100px;display:inline-block">
-    <h4 style="display:inline-block">Name</h4>
-    <h4 style="display:inline-block; float:right">Logged in as <em>username</em> <a href="logout.html">Log Out</a></h4>
+<div class="container" style="margin-top:100px">
+    <img src="<c:url value="/resources/images/sparky1.jpg" />" alt="Sparky" style="width:100px;height:100px;display:inline-block">
+    <h4 style="display:inline-block; float:right">Logged in as <em>username</em></h4> 
+    <!-- For login user -->
+    <c:url value="/j_spring_security_logout" var="logoutUrl" />
+      <form action="${logoutUrl}" method="post" id="logoutForm">
+          <input type="hidden" name="${_csrf.parameterName}"
+                 value="${_csrf.token}" />
+      </form>
+      <script>
+          function formSubmit() {
+              document.getElementById("logoutForm").submit();
+          }
+      </script>
+      <c:if test="${pageContext.request.userPrincipal.name != null}">
+          <p style="float:right">
+              <a href="javascript:formSubmit()"> Logout</a>
+          </p>
+      </c:if>
 </div>
 <div class="container" style="width:50%; text-align:center">
     <div class="row">

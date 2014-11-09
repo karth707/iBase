@@ -7,7 +7,12 @@ public class UserInfo {
 	private String friendList;
 	private String imagesList;
 	private int imageCount;
+	private String firstName;
+	private String lastName;
 	
+	public UserInfo(){
+		
+	}
 	public UserInfo(String userId, String password
 			, String friendList, String imagesList, int imageCount){
 		this.friendList = friendList;
@@ -48,6 +53,22 @@ public class UserInfo {
 
 	public void setImageCount(int imageCount) {
 		this.imageCount = imageCount;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
 	}
 	
 }

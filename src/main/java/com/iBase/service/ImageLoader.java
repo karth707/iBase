@@ -29,6 +29,9 @@ public class ImageLoader {
 	public List<String> getImageLocations() {
 		List<String> images = new ArrayList<String>();
 		String imagesJSON = user.getImagesList();
+		if(imagesJSON==null){
+			return null;
+		}
 		try {
 			ArrayList<IBaseImage> IBaseImages = mapper.readValue(imagesJSON
 					, new TypeReference<ArrayList<IBaseImage>>(){});

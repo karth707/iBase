@@ -23,7 +23,7 @@ import com.iBase.service.db.UserInfoDAO;
 public class HomeController {
 
 	protected final Log log = LogFactory.getLog(getClass());
-	private String userId = "test1@asu.edu";
+	//private String userId = "test1@asu.edu";
 	ImageLoader imageLoader;
 	
 	@Autowired
@@ -32,24 +32,28 @@ public class HomeController {
 	@RequestMapping(value={"/", "/home*"}, method = RequestMethod.GET)
     public String handleHomeRequest(Model model){
     	
-		String now = (new Date()).toString();
-        log.info("Returning home to "+ userId + " view at " + now);
-        model.addAttribute("now", now);
-        
-        //get the images
-        List<String> imagesLocation = getImages(userId);
-        log.info(imagesLocation);
-        model.addAttribute("imageList", imagesLocation);
-        
-        //add to the model to display on page
-        Authentication auth = SecurityContextHolder.getContext()
+		Authentication auth = SecurityContextHolder.getContext()
 				.getAuthentication();
 		if (!(auth instanceof AnonymousAuthenticationToken)) {
+		
 			UserDetails userDetail = (UserDetails) auth.getPrincipal();
 			model.addAttribute("userName", userDetail.getUsername());
+			String userId = userDetail.getUsername();
+			String now = (new Date()).toString();
+	        log.info("Returning home to "+ userId + " view at " + now);
+	        model.addAttribute("now", now);
+	        
+	        //get the images
+	        List<String> imagesLocation = getImages(userId);
+	        if(imagesLocation!=null){
+	        	log.info(imagesLocation);
+		        model.addAttribute("imageList", imagesLocation);
+		        //add to the model to display on page
+	        }else{
+	        	model.addAttribute("imagesMessage", "No Images to display!");
+	        }
 			return "home";
 		}
-        
         return "403";
     }
 	

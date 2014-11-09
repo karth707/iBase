@@ -22,11 +22,10 @@
       </div>
   </div>
 	<sec:authorize access="hasRole('ROLE_USER')">
-  <div class="container">
+  <div class="container" style="margin-top:100px">
       <!-- CHANGE IMG TO USER PROFILE PIC-->
       <img src="<c:url value="/resources/images/sparky1.jpg" />" alt="Sparky" style="width:100px;height:100px;display:inline-block">
       <!-- CHANGE NAME TO USER'S NAME-->
-      <h4 style="display:inline-block;">Name</h4>
       <h4 style="display:inline-block; float:right">Logged in as <em><c:out value="${userName}"/></em></h4>
 
       <!-- For login user -->
@@ -41,14 +40,23 @@
           }
       </script>
       <c:if test="${pageContext.request.userPrincipal.name != null}">
-          <h4 style="display:inline-block; float:right">
+          <p style="float:right">
               <a href="javascript:formSubmit()"> Logout</a>
-          </h4>
+          </p>
       </c:if>
-      <h5 style="float:right; margin-right:110px"><a href="<c:url value="/upload"/>">Upload another photo!</a></h5>
   </div>
 
   <h1 style="color: #6699FF; text-align:center"><fmt:message key="photoHeading"/></h1>
+  <div align="center">
+  		<c:out value="${imagesMessage}"/>
+  		<c:if test="${not empty imageList}">
+  			<c:forEach items="${imageList}" var="image">
+  				<div align="center" style="width:400px; padding:10px; border: 5px solid gray; display:inline-block">
+  				<img src="<c:url value="${image}"/>"/ >
+  				</div>
+  			</c:forEach>
+  		</c:if> 
+  </div>
   </sec:authorize>
   </body>
 </html>
