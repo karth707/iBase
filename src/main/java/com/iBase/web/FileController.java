@@ -87,6 +87,12 @@ public class FileController implements HandlerExceptionResolver{
 		}
 		
 		if(!result.hasErrors()){
+			
+			String fileName = imageModel.getImageFile().getOriginalFilename();
+			if(!isValidFile(fileName)){
+				model.addAttribute("uploadLimit", "Sorry! Invalid File!");
+				return "upload";
+			}
 			FileOutputStream outputStream = null;
 			String rootPath = System.getProperty("catalina.home");
 			File dir = new File(rootPath + File.separator 
@@ -127,6 +133,15 @@ public class FileController implements HandlerExceptionResolver{
 		}else{
 			return "upload";
 		}
+	}
+
+	private boolean isValidFile(String fileName) {
+
+		if(fileName.contains(".jpg") || fileName.contains(".jpeg")
+				|| fileName.contains(".png") || fileName.contains(".gif")){
+			return true;
+		}
+		return false;
 	}
 
 	private UserInfo getUserInfo(String userName) {
