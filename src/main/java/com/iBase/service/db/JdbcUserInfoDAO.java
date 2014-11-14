@@ -84,6 +84,12 @@ public class JdbcUserInfoDAO implements UserInfoDAO{
 				, userInfo.getImageCount(), userInfo.getUserId());
 	}
 	
+	public void updateProfilePicture(UserInfo userInfo){
+		String sql = "UPDATE userInfo " +
+				"SET profilePic = ? WHERE userId = ?";
+		logger.info("Running query: " + sql);
+		jdbcTemplate.update(sql, userInfo.getProfilePic(), userInfo.getUserId());
+	}
 	
 //	public void updateTable(UserInfo userInfo){
 //		String sql = "UPDATE userInfo " +
@@ -120,7 +126,7 @@ public class JdbcUserInfoDAO implements UserInfoDAO{
 					UserInfo userInfo = new UserInfo(rs.getString("userId")
 							, rs.getString("password")
 							, rs.getString("friendList"), rs.getString("imagesList")
-							, rs.getInt("imageCount"));
+							, rs.getInt("imageCount"), rs.getString("profilePic"));
 					return userInfo;
 				}
 				return null;

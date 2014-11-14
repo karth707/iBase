@@ -8,4 +8,5 @@ public interface UserInfoDAO {
 	public UserInfo findById(String userId);
 	public void updateTable(UserInfo userInfo);
 	public void insertUserRole(UserRole userRoles);
+	public void updateProfilePicture(UserInfo userInfo);
 }

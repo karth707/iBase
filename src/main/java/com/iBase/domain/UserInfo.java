@@ -9,17 +9,19 @@ public class UserInfo {
 	private int imageCount;
 	private String firstName;
 	private String lastName;
+	private String profilePic;
 	
 	public UserInfo(){
 		
 	}
 	public UserInfo(String userId, String password
-			, String friendList, String imagesList, int imageCount){
+			, String friendList, String imagesList, int imageCount, String profilePic){
 		this.friendList = friendList;
 		this.imagesList = imagesList;
 		this.password = password;
 		this.userId = userId;
 		this.imageCount = imageCount;
+		this.profilePic = profilePic;
 	}
 	
 	public String getUserId() {
@@ -69,6 +71,12 @@ public class UserInfo {
 
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
+	}
+	public String getProfilePic() {
+		return profilePic;
+	}
+	public void setProfilePic(String profilePic) {
+		this.profilePic = profilePic;
 	}
 	
 }

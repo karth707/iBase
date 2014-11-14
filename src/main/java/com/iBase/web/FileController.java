@@ -137,8 +137,7 @@ public class FileController implements HandlerExceptionResolver{
 
 	private boolean isValidFile(String fileName) {
 
-		if(fileName.contains(".jpg") || fileName.contains(".jpeg")
-				|| fileName.contains(".png") || fileName.contains(".gif")){
+		if(fileName.contains(".jpg") || fileName.contains(".jpeg")){
 			return true;
 		}
 		return false;

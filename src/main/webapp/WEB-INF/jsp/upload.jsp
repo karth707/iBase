@@ -19,13 +19,14 @@
         </div>
     </div>
     
-    <div class="container" style="margin-top:100px">
-        <!-- CHANGE IMG TO USER PROFILE PIC-->
-        <img src="<c:url value="/resources/images/sparky1.jpg" />" alt="Sparky" style="width:100px;height:100px;display:inline-block">
+    <div class="container" style="margin-top:60px">
+        <img src="<c:url value="/resources/images/${userName}/profile.jpg" />" alt="Sparky" style="width:100px;height:100px;display:inline-block" onerror="this.src='<c:url value="/resources/images/sparky1.jpg" />'">
         <!-- CHANGE NAME TO USER'S NAME-->
-        <!-- CHANGE USERNAME TO USER'S USERNAME-->
-        <h4 style="display:inline-block; float:right">Logged in as <em><c:out value="${userName}"/></em></h4>
-
+        <h4 style="display:inline-block; float:right">Logged in as <em><c:out value="${userName}"/></em>
+        	<c:if test="${pageContext.request.userPrincipal.name != null}">
+        		<a href="javascript:formSubmit()">  Logout</a>
+        	</c:if>
+        </h4>
         <!-- For login user -->
         <c:url value="/j_spring_security_logout" var="logoutUrl" />
         <form action="${logoutUrl}" method="post" id="logoutForm">
@@ -36,12 +37,7 @@
             function formSubmit() {
                 document.getElementById("logoutForm").submit();
             }
-        </script>
-        <c:if test="${pageContext.request.userPrincipal.name != null}">
-            <p style="float:right">
-                <a href="javascript:formSubmit()"> Logout</a>
-            </p>
-        </c:if>
+        </script>        
     </div>
     <div class="container" style="width:50%;text-align:center">
         <div class="row">
