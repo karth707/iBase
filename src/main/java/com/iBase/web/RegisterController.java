@@ -34,6 +34,13 @@ public class RegisterController {
 		if(userExists(newUser.getEmail())){
 			model.put("newUserError", "Username Taken!");
 			return "signup";
+		}else if(!(newUser.getEmail().contains("@")) 
+				&& !(newUser.getEmail().contains("."))){
+			model.put("newUserError", "invalid email address!");
+			return "signup";
+		}else if(newUser.getPassword().length()<6){
+			model.put("newUserError", "password must be atleast 6 characters!");
+			return "signup";
 		}else{
 			updateDB(newUser);
 			return "success";

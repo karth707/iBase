@@ -26,7 +26,7 @@
     <br>
     <br>
     <div align="center" id="login-box">
-    	<p>${newUserError}</p>
+    	<p style="color: red;">${newUserError}</p>
         <form:form action="register" method="post" commandName="userForm">
             <table border="0">
                 <tr>

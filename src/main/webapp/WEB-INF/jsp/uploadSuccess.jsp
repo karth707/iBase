@@ -21,8 +21,9 @@
 	  </div>
   
   	<div style="margin-top:100px;text-align:center">
-		<h3 style="color: green;">File has been uploaded successfully.</h3> <br>
-		File Name : ${imageFile.name}
+		<h3 style="color: green;">The file ${imageFile.name} has been uploaded successfully.</h3> <br>
+		<img src="<c:url value="${uploadedImage}"/>" style="width:500px" />	
+		<p>Image ID: ${imageId}</p>	
 	</div>
 </div>
 </body>

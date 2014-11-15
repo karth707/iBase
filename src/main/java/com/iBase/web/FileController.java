@@ -129,6 +129,8 @@ public class FileController implements HandlerExceptionResolver{
 				return "upload";
 			}
 			logger.info("Server File Location="+imageFile.getAbsolutePath());
+			model.addAttribute("uploadedImage", dbLocation);
+			model.addAttribute("imageId", user.getImageCount()+1);
 			return "uploadSuccess";
 		}else{
 			return "upload";
