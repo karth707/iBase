@@ -10,8 +10,11 @@
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<beans:property name="driverClassName" value="com.mysql.jdbc.Driver" />
 		<beans:property name="url" value="jdbc:mysql://localhost/iBaseDB" />
-		<beans:property name="username" value="root" />
-		<beans:property name="password" value="password" />
+		<beans:property name="username" value="cs360" />
+		<beans:property name="password" value="cs360!" />
+		<!-- localhostconfig -->
+		<!-- <beans:property name="username" value="root" /> -->
+		<!-- <beans:property name="password" value="password" /> -->
 	</beans:bean>
     
     <!-- enable use-expressions -->

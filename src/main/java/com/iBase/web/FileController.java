@@ -94,7 +94,8 @@ public class FileController implements HandlerExceptionResolver{
 				return "upload";
 			}
 			FileOutputStream outputStream = null;
-			String rootPath = System.getProperty("catalina.home");
+			//String rootPath = System.getProperty("catalina.home"); //localhost
+			String rootPath = System.getProperty("catalina.base");	//server
 			File dir = new File(rootPath + File.separator 
 					+ "webapps" + File.separator + "iBase" + File.separator 
 					+ "resources" + File.separator 
@@ -112,7 +113,7 @@ public class FileController implements HandlerExceptionResolver{
 					+ File.separator 
 					+ Integer.toString(user.getImageCount()+1)+".jpg";
 			
-			boolean update = updateDB(user, dbLocation, imageModel.getName());
+			boolean update = updateDB(user, dbLocation, imageModel.getName());   
 			if(update==false){
 				model.addAttribute("uploadLimit", "Sorry! DataBase update Error!");
 				return "upload";
@@ -129,7 +130,7 @@ public class FileController implements HandlerExceptionResolver{
 				return "upload";
 			}
 			logger.info("Server File Location="+imageFile.getAbsolutePath());
-			model.addAttribute("uploadedImage", dbLocation);
+			model.addAttribute("uploadedImage", dbLocation);	
 			model.addAttribute("imageId", user.getImageCount()+1);
 			return "uploadSuccess";
 		}else{

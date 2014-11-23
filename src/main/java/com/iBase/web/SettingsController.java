@@ -72,13 +72,18 @@ public class SettingsController implements HandlerExceptionResolver{
 				return "settings";
 			}
 			FileOutputStream outputStream = null;
-			String rootPath = System.getProperty("catalina.home");
+			//String rootPath = System.getProperty("catalina.home"); //localhost
+			String rootPath = System.getProperty("catalina.base");	//server
+			logger.info("rootpath:" +rootPath);
 			File dir = new File(rootPath + File.separator 
 					+ "webapps" + File.separator + "iBase" + File.separator 
 					+ "resources" + File.separator 
 					+ "images" + File.separator + userName);
-			if (!dir.exists())
-				dir.mkdirs();
+			if (!dir.exists()){
+				
+				boolean x = dir.mkdirs();
+				logger.info(x);
+			}
 			
 			UserInfo user = getUserInfo(userName);
 			String newimageLocation = dir.getAbsolutePath()
@@ -90,7 +95,7 @@ public class SettingsController implements HandlerExceptionResolver{
 					+ File.separator 
 					+ "profile.jpg";
 			
-			boolean update = updateDB(user, dbLocation);
+			boolean update = updateDB(user, dbLocation);  
 			if(update==false){
 				model.addAttribute("uploadInfo", "Sorry! DataBase update Error!");
 				return "settings";
@@ -101,7 +106,7 @@ public class SettingsController implements HandlerExceptionResolver{
 				profileImageFile = new File(newimageLocation);
 			}
 			
-			try {
+			try {				
 				outputStream = new FileOutputStream(profileImageFile);
 				outputStream.write(profileImageModel.getProfileImageFile().getFileItem().get());
 				outputStream.close();
