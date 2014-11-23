@@ -5,7 +5,7 @@ import org.springframework.web.multipart.commons.CommonsMultipartFile;
 public class ImageFile {
 
 	private CommonsMultipartFile imageFile = null;
-	private String name = null;
+	private String name = "n/a";
 
 	public CommonsMultipartFile getImageFile() {
 		return imageFile;

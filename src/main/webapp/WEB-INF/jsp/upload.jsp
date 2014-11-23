@@ -47,7 +47,12 @@
 		        <form:form commandName="imageFile" enctype="multipart/form-data" method="POST">
 			        <form:errors path="*" cssStyle="color : red;"/>
 			        ${errors}
-		            <form:input type="file" path="imageFile" />
+			        <br>
+		            <form:input type="file" path="imageFile" align="center"/>
+		            <br>
+		            Title: <form:input type="text" path="name"/>
+		            <br>
+		            <br>
 			        <input type="submit" value="Upload" />
 		         </form:form>
          	</div>

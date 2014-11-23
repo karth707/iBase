@@ -112,7 +112,7 @@ public class FileController implements HandlerExceptionResolver{
 					+ File.separator 
 					+ Integer.toString(user.getImageCount()+1)+".jpg";
 			
-			boolean update = updateDB(user, dbLocation);
+			boolean update = updateDB(user, dbLocation, imageModel.getName());
 			if(update==false){
 				model.addAttribute("uploadLimit", "Sorry! DataBase update Error!");
 				return "upload";
@@ -150,7 +150,7 @@ public class FileController implements HandlerExceptionResolver{
 		return user;
 	}
 
-	private boolean updateDB(UserInfo user, String newimageLocation) {
+	private boolean updateDB(UserInfo user, String newimageLocation, String title) {
 		
 		try{
 			List<IBaseImage> imagesLocations = getImageList(user);
@@ -164,7 +164,8 @@ public class FileController implements HandlerExceptionResolver{
 			newImage.setImageId(Integer.toString(user.getImageCount()+1));
 			newImage.setImageLocation(newimageLocation);
 			newImage.setLikes(0);
-			newImage.setImageTitle("imge number: "+Integer.toString(user.getImageCount()+1));
+			//newImage.setImageTitle("imge number: "+Integer.toString(user.getImageCount()+1));
+			newImage.setImageTitle(title);
 			imagesLocations.add(newImage);
 			String imagesList = jsonizer.jsonize(imagesLocations);
 			user.setImagesList(imagesList);

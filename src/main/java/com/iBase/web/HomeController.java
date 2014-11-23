@@ -15,6 +15,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.iBase.domain.IBaseImage;
 import com.iBase.domain.UserInfo;
 import com.iBase.service.ImageLoader;
 import com.iBase.service.db.UserInfoDAO;
@@ -44,10 +45,11 @@ public class HomeController {
 	        model.addAttribute("now", now);
 	        
 	        //get the images
-	        List<String> imagesLocation = getImages(userId);
-	        if(imagesLocation!=null){
-	        	log.info(imagesLocation);
-		        model.addAttribute("imageList", imagesLocation);
+	        List<IBaseImage> imageObjects = getImages(userId);
+
+	        if(imageObjects.size()!=0){
+	        	log.info(imageObjects);
+		        model.addAttribute("imageObjects", imageObjects);
 		        //add to the model to display on page
 	        }else{
 	        	model.addAttribute("imagesMessage", "No Images to display!");
@@ -57,10 +59,10 @@ public class HomeController {
         return "403";
     }
 	
-	private List<String> getImages(String userId2) {
+	private List<IBaseImage> getImages(String userId2) {
 		UserInfo user = userInfoDAO.findById(userId2);
         imageLoader = new ImageLoader(user);
-        return imageLoader.getImageLocations();
+        return imageLoader.getImageObjects();
 	}
 
 	public UserInfoDAO getUserInfoDAO() {

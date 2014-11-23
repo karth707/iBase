@@ -7,6 +7,27 @@
       <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
       <link href="<c:url value="/resources/css/styles.css" />" rel="stylesheet" type="text/css">
       <link href="<c:url value="/resources/css/bootstrap.min.css" />" rel="stylesheet" type="text/bootstrap.min.css">
+      <style>
+.image {
+	position:relative;
+	width:340px; 	
+	border: 5px solid gray;
+	margin: 2px; 
+	display:inline-block
+}
+.image .text {
+    position:absolute;
+    top:10px;        
+    width: 100%;   
+    color:white;
+    background-color: rgba(0,0,0,0.6);
+    opacity: .60; /* Standard: FF gt 1.5, Opera, Safari, CSS3 */
+    filter: alpha(opacity=60); /* IE lt 8 */
+    -ms-filter: "alpha(opacity=60)"; /* IE 8 */
+    -khtml-opacity: .60; /* Safari 1.x */
+    -moz-opacity: .60; /* FF lt 1.5, Netscape */
+}
+</style>
   </head>
   <body>
   
@@ -45,10 +66,13 @@
   <h1 style="color: #6699FF; text-align:center"><fmt:message key="photoHeading"/></h1>
   <div align="center">
   		<c:out value="${imagesMessage}"/>
-  		<c:if test="${not empty imageList}">
-  			<c:forEach items="${imageList}" var="image">
-  				<div align="center" style="width:440px; padding:7px; border: 5px solid gray; display:inline-block">
-  				<img src="<c:url value="${image}"/>" style="width:400px" />
+  		<c:if test="${not empty imageObjects}">
+  			<c:forEach items="${imageObjects}" var="image">
+  				<div class="image" align="center">
+  				<img src="<c:url value="${image.imageLocation}"/>" style="width:100%" />
+  					<div class="text" >
+  					 	<p>${image.imageTitle}</p>
+  					</div>
   				</div>
   			</c:forEach>
   		</c:if> 

@@ -1,7 +1,6 @@
 package com.iBase.domain;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -18,7 +17,7 @@ public class ImageFileTest {
 	@Test
 	public void testSetAndGetName(){
 		String name = "name";
-		assertNull(file.getName());
+		assertEquals("n/a",file.getName());
 		file.setName(name);
 		assertEquals(name, file.getName());
 	}

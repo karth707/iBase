@@ -26,17 +26,17 @@ public class ImageLoader {
 		mapper = new ObjectMapper();
 	}
 
-	public List<String> getImageLocations() {
-		List<String> images = new ArrayList<String>();
+	public List<IBaseImage> getImageObjects() {
+		List<IBaseImage> images = new ArrayList<IBaseImage>();
 		String imagesJSON = user.getImagesList();
 		if(imagesJSON==null){
-			return null;
+			return images;
 		}
 		try {
 			ArrayList<IBaseImage> IBaseImages = mapper.readValue(imagesJSON
 					, new TypeReference<ArrayList<IBaseImage>>(){});
 			for(IBaseImage image: IBaseImages){
-				images.add(image.getImageLocation());
+				images.add(image);
 			}
 		} catch (JsonParseException e) {
 			e.printStackTrace();
