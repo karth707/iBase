@@ -5,6 +5,7 @@
 
 <html>
 <head>
+<title><fmt:message key="title"/></title>	
 <style>
 #login-box {
 	width: 300px;
@@ -19,7 +20,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>iBase-Registration</title>
 </head>
-<body background="<c:url value="/resources/images/background_1.jpg"/>">
+<body background="<c:url value="/resources/images/background_1.jpg"/>"> 
     <br>
     <br>
     <br>
@@ -49,6 +50,9 @@
                     <td><form:password path="password" /></td>
                 </tr>
                     <td colspan="2" align="center"><input type="submit" value="Register" /></td>
+                </tr>
+                <tr>
+                    <td colspan="2" align="center"><p>Login <a href="<c:url value="/login"/>">here!</a></p></td>
                 </tr>
             </table>
         </form:form>

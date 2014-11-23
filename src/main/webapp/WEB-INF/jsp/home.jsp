@@ -7,7 +7,7 @@
       <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
       <link href="<c:url value="/resources/css/styles.css" />" rel="stylesheet" type="text/css">
       <link href="<c:url value="/resources/css/bootstrap.min.css" />" rel="stylesheet" type="text/bootstrap.min.css">
-      <style>
+<style>
 .image {
 	position:relative;
 	width:340px; 	
@@ -67,9 +67,10 @@
   <div align="center">
   		<c:out value="${imagesMessage}"/>
   		<c:if test="${not empty imageObjects}">
+  			<p>Click on the image to view and apply filters!!</p>
   			<c:forEach items="${imageObjects}" var="image">
   				<div class="image" align="center">
-  				<img src="<c:url value="${image.imageLocation}"/>" style="width:100%" />
+  				<a href="<c:url value="/edit/${image.imageId}"/>"><img src="<c:url value="${image.imageLocation}"/>" style="width:100%" /></a>
   					<div class="text" >
   					 	<p>${image.imageTitle}</p>
   					</div>
@@ -77,6 +78,10 @@
   			</c:forEach>
   		</c:if> 
   </div>
+  <br>
+  <br>
+  <br>
+  <br>
   </sec:authorize>
   </body>
 </html>
