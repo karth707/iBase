@@ -78,7 +78,7 @@ h5 { text-align: center;
 		//]]>  
 	</script>  
 	<br>
-	<p>Grayscale: <input type="range" min="0" max="200" step="10" id="gray" style="width:200px"/></p>		
+	<p>Grayscale: <input type="range" min="0" max="100" step="10" id="gray" style="width:200px"/></p>		
 	<script type='text/javascript'>
 		//<![CDATA[ 
 		document.getElementById("gray").addEventListener('change', function() {
