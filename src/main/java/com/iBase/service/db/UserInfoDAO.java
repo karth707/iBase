@@ -4,9 +4,9 @@ import com.iBase.domain.UserInfo;
 import com.iBase.domain.UserRole;
 
 public interface UserInfoDAO {
-	public void insert(UserInfo userInfo);
+	public boolean insert(UserInfo userInfo);
 	public UserInfo findById(String userId);
-	public void updateTable(UserInfo userInfo);
-	public void insertUserRole(UserRole userRoles);
-	public void updateProfilePicture(UserInfo userInfo);
+	public boolean updateTable(UserInfo userInfo);
+	public boolean insertUserRole(UserRole userRoles);
+	public boolean updateProfilePicture(UserInfo userInfo);
 }

@@ -94,8 +94,8 @@ public class FileController implements HandlerExceptionResolver{
 				return "upload";
 			}
 			FileOutputStream outputStream = null;
-			//String rootPath = System.getProperty("catalina.home"); //localhost
-			String rootPath = System.getProperty("catalina.base");	//server
+			String rootPath = System.getProperty("catalina.home"); //localhost
+			//String rootPath = System.getProperty("catalina.base");	//server
 			File dir = new File(rootPath + File.separator 
 					+ "webapps" + File.separator + "iBase" + File.separator 
 					+ "resources" + File.separator 

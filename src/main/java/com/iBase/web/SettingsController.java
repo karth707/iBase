@@ -72,8 +72,8 @@ public class SettingsController implements HandlerExceptionResolver{
 				return "settings";
 			}
 			FileOutputStream outputStream = null;
-			//String rootPath = System.getProperty("catalina.home"); //localhost
-			String rootPath = System.getProperty("catalina.base");	//server
+			String rootPath = System.getProperty("catalina.home"); //localhost
+			//String rootPath = System.getProperty("catalina.base");	//server
 			logger.info("rootpath:" +rootPath);
 			File dir = new File(rootPath + File.separator 
 					+ "webapps" + File.separator + "iBase" + File.separator 

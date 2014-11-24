@@ -46,5 +46,4 @@ public class EditController {
 		}
 		return "403";
 	}
-	
 }

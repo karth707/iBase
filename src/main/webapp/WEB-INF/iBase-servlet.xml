@@ -25,11 +25,11 @@
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
 		<property name="url" value="jdbc:mysql://localhost/iBaseDB" />
-		<property name="username" value="cs360" />
-		<property name="password" value="cs360!" />
+		<!-- <property name="username" value="cs360" /> -->
+		<!-- <property name="password" value="cs360!" /> -->
 		<!-- localhostconfig -->
-		<!-- <property name="username" value="root" /> -->
-		<!-- <property name="password" value="password" /> -->
+		<property name="username" value="root" />
+		<property name="password" value="password" />
 	</bean>
 	<bean id="userInfoDAO" class="com.iBase.service.db.JdbcUserInfoDAO">
 		<!-- <property name="dataSource" ref="dataSource" /> -->
@@ -37,19 +37,7 @@
 	</bean>
 	
 	<!-- Validators beans -->
-	<bean id="validator" class="com.iBase.web.validators.ImageFileValidator" />
-
-	<!-- URLS -->	
-	<!-- <bean name="/home.htm" class="com.iBase.web.HomeController">
-	    <property name="userInfoDAO" ref="userInfoDAO" />
-	</bean> -->
-	<!-- <bean name="/upload.htm" class="com.iBase.web.FileController">
-	    <property name="userInfoDAO" ref="userInfoDAO" />
-	</bean> -->
-	<!-- <bean name="/login.htm" class="com.iBase.web.LoginController">
-	</bean> -->
-	<!-- <bean name="/403.htm" class="com.iBase.web.LoginController">
-	</bean> -->
+	<bean id="validator" class="com.iBase.web.validators.ImageFileValidator" />	
 
 	<!-- Resolvers -->
 	<bean id="multipartResolver"

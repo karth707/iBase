@@ -14,6 +14,7 @@ public class UserInfo {
 	public UserInfo(){
 		
 	}
+	
 	public UserInfo(String userId, String password
 			, String friendList, String imagesList, int imageCount, String profilePic){
 		this.friendList = friendList;

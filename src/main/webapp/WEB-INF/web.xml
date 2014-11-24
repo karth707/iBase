@@ -38,6 +38,12 @@
 			/WEB-INF/spring-security.xml
 		</param-value>
 	</context-param>
+	<context-param>
+		<param-name>contextConfigLocation1</param-name>
+		<param-value>
+			/WEB-INF/iBase-servlet.xml
+		</param-value>
+	</context-param>
  
 	<!-- Spring Security -->
 	<filter>
