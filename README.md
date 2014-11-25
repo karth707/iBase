@@ -103,6 +103,11 @@ MACINTOSH:
 -	The functional tests will also be run when you build the project. **See NOTE 2**
 
 Note 1: Our functional tests for the UploadPassedTest and SettingsPassedTest involve us uploading an image from our local harddrives. Since the test will go to the location to check for an image and try uploading it, you will have to change the location to a .jpg file on your local machine. 
+Edit the following files to add location of image from local:
+/iBase/src/test/java/com/iBase/web/UploadPassedTest.java
+/iBase/src/test/java/com/iBase/web/UploadFailedTest.java
+/iBase/src/test/java/com/iBase/web/SettingsFailedTest.java
+/iBase/src/test/java/com/iBase/web/SettingsPassedTest.java
 
 Note 2: An even more important note: The functional tests are set to run when you build from the command line using Maven, so you should see the tests running prior to creating the .war file to upload to Tomcat. 
 
@@ -111,12 +116,3 @@ Note 2: An even more important note: The functional tests are set to run when yo
 **Here are the test cases running on a terminal: https://www.youtube.com/watch?v=UkckRuDRIU8**
 
 **And here are the test cases running via Selenium IDE:https://www.youtube.com/watch?v=YyKnp7Op6nM**
-
-
-
-
-
-
-
-
-
