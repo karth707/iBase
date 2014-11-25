@@ -9,20 +9,102 @@ To be able to run our project you will need a few things:
 - The source code. This can be downloaded from GitHub in a variety of ways. Clone the repo or download the zip.
 - If you plan to edit the source code, you will also need a Java IDE (our group used both Eclipse and IntelliJ)
 
-Begin by downloading the Maven, Tomcat, mySQL, and Sequel Pro to your computer. Follow the tutorials on the respective sites to get them working on your local machine.
+Windows:
+1)	Download Maven 
 
-Then you can start downloading the source code from GitHub by simply clicking "Download Zip" in the bottom right corner of our project page.
+o	Unzip the distribution archive, i.e. apache-maven-3.2.3-bin.zip to the directory you wish to install Maven 3.2.3. These instructions assume you chose C:\Program Files\Apache Software Foundation. The subdirectory apache-maven-3.2.3 will be created from the archive.
+o	Add the M2_HOME environment variable by opening up the system properties (WinKey + Pause), selecting the "Advanced" tab, and the "Environment Variables" button, then adding the M2_HOME variable in the user variables with the value C:\Program Files\Apache Software Foundation\apache-maven-3.2.3. Be sure to omit any quotation marks around the path even if it contains spaces. Note: For Maven 2.0.9, also be sure that the M2_HOME doesn't have a '\' as last character.
+o	In the same dialog, add the M2 environment variable in the user variables with the value %M2_HOME%\bin.
+o	Optional: In the same dialog, add the MAVEN_OPTS environment variable in the user variables to specify JVM properties, e.g. the value -Xms256m -Xmx512m. This environment variable can be used to supply extra options to Maven.
+o	In the same dialog, update/create the Path environment variable in the user variables and prepend the value %M2% to add Maven available in the command line.
+o	In the same dialog, make sure that JAVA_HOME exists in your user variables or in the system variables and it is set to the location of your JDK, e.g. C:\Program Files\Java\jdk1.7.0_51 and that %JAVA_HOME%\bin is in your Path environment variable.
+o	Open a new command prompt (Winkey + R then type cmd) and run mvn --version to verify that it is correctly installed.
 
-Make sure to unzip the project and run the queries listed in the dbQueries file in Sequel Pro's query GUI.
+2)	Download Tomat
+•	Goto http://tomcat.apache.org ⇒ Downloads ⇒ Tomcat 8.0 ⇒ "8.0.{xx}" (where {xx} is the latest upgrade number) ⇒ Binary Distributions ⇒ Core ⇒ "zip" package (e.g., "apache-tomcat-8.0.{xx}.zip", about 8 MB).
+•	UNZIP into a directory of your choice. DO NOT unzip onto the Desktop (because its path is hard to locate). I suggest using "d:\myProject". Tomcat will be unzipped into directory "d:\myProject\apache-tomcat-8.0.{xx}". For ease of use, we shall shorten and rename this directory to "d:\myProject\tomcat". Take note of Your Tomcat Installed Directory. Hereafter, I shall refer to the Tomcat installed directory as <TOMCAT_HOME> (or <CATALINA_HOME> - "Catalina" is the codename for Tomcat 5 and above).
+3)	Download MySQL Installer 
+4)	Download Sequel Pro
+5)	Then you can start downloading the source code from GitHub by simply clicking "Download Zip" in the bottom right corner of our project page.
+6)	Make sure to unzip the project and run the queries listed in the dbQueries file in Sequel Pro's query GUI.
+7)	Now that the source code is unzipped and your database is ready to store login information, you can change directories until you're in the project and run the command 'mvn clean package' from the terminal.
+8)	This will generate a .war file in the target directory of the project. This is the file you will need to upload to tomcat's manager (http://localhost:8080/manager/html) in order to display the content.
+9)	Once uploaded, you simply click on the name of the file and it will run in your from your local server giving a URL that looks like: http://localhost:8080/iBase/login. Thus allowing you to run the program
+10)	Download/Install Selenium
+•	Open Mozilla Firefox Browser.
+•	Type URL : http://seleniumhq.org/download/ in your browser.Selenium IDE download page will get open then click on latestDownload version link (Here is 1.3.0) as shown in image bellow. click on that link.
+•	When you click on latest Selenium IDE Download version link, Firefox will show one popup saying do you want to allow Mozilla Firefox to install selenium IDE or not. Click on Allow button as shown in image bellow.
+•	When you click on allow button, Firefox will automatically install Selenium IDE software. after completion of Selenium IDE installation, it will show one pop up saying Selenium IDE installation completed. you need to restart your browser to use selenium IDE. Click on Restart Now button as show in image bellow.
+•	When you click on allow button, Firefox will automatically install Selenium IDE software. after completion of Selenium IDE installation, it will show one pop up saying Selenium IDE installation completed. you need to restart your browser to use selenium IDE. Click on Restart Now button as show in image bellow.
+•	Click on Selenium IDE as shown in image above. It will launch Selenium IDE software window as shown in image bellow. 
+•	Now you can use it to record and play your web application test.
 
-Now that the source code is unzipped and your database is ready to store login information, you can change directories until you're in the project and run the command 'mvn clean package' from the terminal.
+Mac:
+1)	Download Maven 
 
-This will generate a .war file in the target directory of the project. This is the file you will need to upload to tomcat's manager (http://localhost:8080/manager/html) in order to display the content.
+•	Extract the distribution archive, i.e. apache-maven-3.2.3-bin.tar.gz to the directory you wish to install Maven 3.2.3. These instructions assume you chose/usr/local/apache-maven. The subdirectory apache-maven-3.2.3 will be created from the archive.
+•	In a command terminal, add the M2_HOME environment variable, e.g. export M2_HOME=/usr/local/apache-maven/apache-maven-3.2.3.
+•	Add the M2 environment variable, e.g. export M2=$M2_HOME/bin.
+•	Optional: Add the MAVEN_OPTS environment variable to specify JVM properties, e.g. export MAVEN_OPTS="-Xms256m -Xmx512m". This environment variable can be used to supply extra options to Maven.
+•	Add M2 environment variable to your path, e.g. export PATH=$M2:$PATH.
+•	Make sure that JAVA_HOME is set to the location of your JDK, e.g. export JAVA_HOME=/usr/java/jdk1.7.0_51 and that $JAVA_HOME/bin is in your PATH environment variable.
+•	Run mvn --version to verify that it is correctly installed.
 
-Once uploaded, you simply click on the name of the file and it will run in your from your local server giving a URL that looks like: http://localhost:8080/iBase/login .
+2)	Download Tomat
+•	Download a binary distribution of the core module: apache-tomcat-7.0.47.tar.gz from here. I picked the tar.gz in Binary Distributions / Core section.
+•	Opening/unarchiving the archive will create a folder structure in your Downloads folder: (btw, this free Unarchiver app is perfect for all kinds of compressed files and superior to the built-in Archive Utility.app)
+~/Downloads/apache-tomcat-7.0.47
+•	Open to Terminal app to move the unarchived distribution to /usr/local:
+sudo mkdir -p /usr/local
+sudo mv ~/Downloads/apache-tomcat-7.0.47 /usr/local
+•	To make it easy to replace this release with future releases, we are going to create a symbolic link that we are going to use when referring to Tomcat (after removing the old link, you might have from installing a previous version):
+sudo rm -f /Library/Tomcat
+sudo ln -s /usr/local/apache-tomcat-7.0.47 /Library/Tomcat
+•	Change ownership of the /Library/Tomcat folder hierarchy:
+sudo chown -R <your_username> /Library/Tomcat
+•	Make all scripts executable:
+sudo chmod +x /Library/Tomcat/bin/*.sh
 
-That should allow you to run the program. 
+3)	Download MySQL Installer 
+4)	Download Sequel Pro
+5)	Then you can start downloading the source code from GitHub by simply clicking "Download Zip" in the bottom right corner of our project page.
+6)	Make sure to unzip the project and run the queries listed in the dbQueries file in Sequel Pro's query GUI.
+7)	Now that the source code is unzipped and your database is ready to store login information, you can change directories until you're in the project and run the command 'mvn clean package' from the terminal.
+8)	This will generate a .war file in the target directory of the project. This is the file you will need to upload to tomcat's manager (http://localhost:8080/manager/html) in order to display the content.
+9)	Once uploaded, you simply click on the name of the file and it will run in your from your local server giving a URL that looks like: http://localhost:8080/iBase/login. Thus allowing you to run the program
+10)	Download/Install Selenium
+•	Open Mozilla Firefox Browser.
+•	Type URL : http://seleniumhq.org/download/ in your browser.Selenium IDE download page will get open then click on latestDownload version link (Here is 1.3.0) as shown in image bellow. click on that link.
+•	When you click on latest Selenium IDE Download version link, Firefox will show one popup saying do you want to allow Mozilla Firefox to install selenium IDE or not. Click on Allow button as shown in image bellow.
+•	When you click on allow button, Firefox will automatically install Selenium IDE software. after completion of Selenium IDE installation, it will show one pop up saying Selenium IDE installation completed. you need to restart your browser to use selenium IDE. Click on Restart Now button as show in image bellow.
+•	When you click on allow button, Firefox will automatically install Selenium IDE software. after completion of Selenium IDE installation, it will show one pop up saying Selenium IDE installation completed. you need to restart your browser to use selenium IDE. Click on Restart Now button as show in image bellow.
+•	Click on Selenium IDE as shown in image above. It will launch Selenium IDE software window as shown in image bellow. 
+•	Now you can use it to record and play your web application test.
 
-If you'd like to make changes, you would simply open the project directory in the IDE of your choice, configure it for spring, maven, and tomcat, and you'll be able to make your edits in no time!
+
+**If you'd like to make changes, you would simply open the project directory in the IDE of your choice, configure it for spring, maven, and tomcat, and you'll be able to make your edits in no time!**
+
+The MIT License (MIT)
+Copyright (c) <2014> <iBase>
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+
+
+
+
+
 
 
