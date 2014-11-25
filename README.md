@@ -23,10 +23,15 @@ Windows:
 2)	Download Tomat
 -	Goto http://tomcat.apache.org ⇒ Downloads ⇒ Tomcat 8.0 ⇒ "8.0.{xx}" (where {xx} is the latest upgrade number) ⇒ Binary         Distributions ⇒ Core ⇒ "zip" package (e.g., "apache-tomcat-8.0.{xx}.zip", about 8 MB).
 -	UNZIP into a directory of your choice. DO NOT unzip onto the Desktop (because its path is hard to locate). I suggest using     "d:\myProject". Tomcat will be unzipped into directory "d:\myProject\apache-tomcat-8.0.{xx}". For ease of use, we shall        shorten and rename this directory to "d:\myProject\tomcat". Take note of Your Tomcat Installed Directory. Hereafter, I shall   refer to the Tomcat installed directory as <TOMCAT_HOME> (or <CATALINA_HOME> - "Catalina" is the codename for Tomcat 5 and     above).
+
 3)	Download MySQL Installer 
+
 4)	Download Sequel Pro
+
 5)	Then you can start downloading the source code from GitHub by simply clicking "Download Zip" in the bottom right corner of our project page.
+
 6)	Make sure to unzip the project and run the queries listed in the dbQueries file in Sequel Pro's query GUI.
+
 7)	Now that the source code is unzipped and your database is ready to store login information, you can change directories until you're in the project and run the command 'mvn clean package' from the terminal.
 8)	This will generate a .war file in the target directory of the project. This is the file you will need to upload to tomcat's manager (http://localhost:8080/manager/html) in order to display the content.
 9)	Once uploaded, you simply click on the name of the file and it will run in your from your local server giving a URL that looks like: http://localhost:8080/iBase/login. Thus allowing you to run the program
