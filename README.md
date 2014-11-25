@@ -110,7 +110,7 @@ Note 2: An even more important note: The functional tests are set to run when yo
 
 **Here are the test cases running on a terminal: https://www.youtube.com/watch?v=UkckRuDRIU8**
 
-** And here are the test cases running via Selenium IDE:https://www.youtube.com/watch?v=YyKnp7Op6nM**
+**And here are the test cases running via Selenium IDE:https://www.youtube.com/watch?v=YyKnp7Op6nM**
 
 
 
