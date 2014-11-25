@@ -45,7 +45,10 @@ WINDOWS:
 -	When you click on allow button, Firefox will automatically install Selenium IDE software. after completion of Selenium IDE     installation, it will show one pop up saying Selenium IDE installation completed. you need to restart your browser to use      selenium IDE. Click on Restart Now button as show in image bellow.
 -	When you click on allow button, Firefox will automatically install Selenium IDE software. after completion of Selenium IDE     installation, it will show one pop up saying Selenium IDE installation completed. you need to restart your browser to use      selenium IDE. Click on Restart Now button as show in image bellow.
 -	Click on Selenium IDE as shown in image above. It will launch Selenium IDE software window as shown in image bellow. 
--	Now you can use it to record and play your web application test.
+- Once you have the IDE open, you can click on File > Open... or File > Open Test Suite... to open the tests.
+- Once the tests are loaded into the IDE you can then click the Play Entire Test Suite to run through all the tests.
+- The tests will turn green or red depending on whether they pass or fail. **See NOTE 1**
+- The functional tests will also be run when you build the project. **See NOTE 2**
 
 MACINTOSH:
 
