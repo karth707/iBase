@@ -33,16 +33,19 @@ Windows:
 6)	Make sure to unzip the project and run the queries listed in the dbQueries file in Sequel Pro's query GUI.
 
 7)	Now that the source code is unzipped and your database is ready to store login information, you can change directories until you're in the project and run the command 'mvn clean package' from the terminal.
+
 8)	This will generate a .war file in the target directory of the project. This is the file you will need to upload to tomcat's manager (http://localhost:8080/manager/html) in order to display the content.
-9)	Once uploaded, you simply click on the name of the file and it will run in your from your local server giving a URL that looks like: http://localhost:8080/iBase/login. Thus allowing you to run the program
+
+9)	Once uploaded, you simply click on the name of the file and it will run in your from your local server giving a URL that looks like: http://localhost:8080/iBase/login. Thus allowing you to run the program :)
+
 10)	Download/Install Selenium
-•	Open Mozilla Firefox Browser.
-•	Type URL : http://seleniumhq.org/download/ in your browser.Selenium IDE download page will get open then click on latestDownload version link (Here is 1.3.0) as shown in image bellow. click on that link.
-•	When you click on latest Selenium IDE Download version link, Firefox will show one popup saying do you want to allow Mozilla Firefox to install selenium IDE or not. Click on Allow button as shown in image bellow.
-•	When you click on allow button, Firefox will automatically install Selenium IDE software. after completion of Selenium IDE installation, it will show one pop up saying Selenium IDE installation completed. you need to restart your browser to use selenium IDE. Click on Restart Now button as show in image bellow.
-•	When you click on allow button, Firefox will automatically install Selenium IDE software. after completion of Selenium IDE installation, it will show one pop up saying Selenium IDE installation completed. you need to restart your browser to use selenium IDE. Click on Restart Now button as show in image bellow.
-•	Click on Selenium IDE as shown in image above. It will launch Selenium IDE software window as shown in image bellow. 
-•	Now you can use it to record and play your web application test.
+- Open Mozilla Firefox Browser.
+-	Type URL : http://seleniumhq.org/download/ in your browser.Selenium IDE download page will get open then click on              latestDownload version link (Here is 1.3.0) as shown in image bellow. click on that link.
+-	When you click on latest Selenium IDE Download version link, Firefox will show one popup saying do you want to allow Mozilla   Firefox to install selenium IDE or not. Click on Allow button as shown in image bellow.
+-	When you click on allow button, Firefox will automatically install Selenium IDE software. after completion of Selenium IDE     installation, it will show one pop up saying Selenium IDE installation completed. you need to restart your browser to use      selenium IDE. Click on Restart Now button as show in image bellow.
+-	When you click on allow button, Firefox will automatically install Selenium IDE software. after completion of Selenium IDE     installation, it will show one pop up saying Selenium IDE installation completed. you need to restart your browser to use      selenium IDE. Click on Restart Now button as show in image bellow.
+-	Click on Selenium IDE as shown in image above. It will launch Selenium IDE software window as shown in image bellow. 
+-	Now you can use it to record and play your web application test.
 
 Mac:
 1)	Download Maven 
@@ -71,20 +74,27 @@ sudo chown -R <your_username> /Library/Tomcat
 sudo chmod +x /Library/Tomcat/bin/*.sh
 
 3)	Download MySQL Installer 
+
 4)	Download Sequel Pro
+
 5)	Then you can start downloading the source code from GitHub by simply clicking "Download Zip" in the bottom right corner of our project page.
+
 6)	Make sure to unzip the project and run the queries listed in the dbQueries file in Sequel Pro's query GUI.
+
 7)	Now that the source code is unzipped and your database is ready to store login information, you can change directories until you're in the project and run the command 'mvn clean package' from the terminal.
+
 8)	This will generate a .war file in the target directory of the project. This is the file you will need to upload to tomcat's manager (http://localhost:8080/manager/html) in order to display the content.
-9)	Once uploaded, you simply click on the name of the file and it will run in your from your local server giving a URL that looks like: http://localhost:8080/iBase/login. Thus allowing you to run the program
+
+9)	Once uploaded, you simply click on the name of the file and it will run in your from your local server giving a URL that looks like: http://localhost:8080/iBase/login. Thus allowing you to run the program :)
+
 10)	Download/Install Selenium
-•	Open Mozilla Firefox Browser.
-•	Type URL : http://seleniumhq.org/download/ in your browser.Selenium IDE download page will get open then click on latestDownload version link (Here is 1.3.0) as shown in image bellow. click on that link.
-•	When you click on latest Selenium IDE Download version link, Firefox will show one popup saying do you want to allow Mozilla Firefox to install selenium IDE or not. Click on Allow button as shown in image bellow.
-•	When you click on allow button, Firefox will automatically install Selenium IDE software. after completion of Selenium IDE installation, it will show one pop up saying Selenium IDE installation completed. you need to restart your browser to use selenium IDE. Click on Restart Now button as show in image bellow.
-•	When you click on allow button, Firefox will automatically install Selenium IDE software. after completion of Selenium IDE installation, it will show one pop up saying Selenium IDE installation completed. you need to restart your browser to use selenium IDE. Click on Restart Now button as show in image bellow.
-•	Click on Selenium IDE as shown in image above. It will launch Selenium IDE software window as shown in image bellow. 
-•	Now you can use it to record and play your web application test.
+- Open Mozilla Firefox Browser.
+-	Type URL : http://seleniumhq.org/download/ in your browser.Selenium IDE download page will get open then click on              latestDownload version link (Here is 1.3.0) as shown in image bellow. click on that link.
+-	When you click on latest Selenium IDE Download version link, Firefox will show one popup saying do you want to allow Mozilla   Firefox to install selenium IDE or not. Click on Allow button as shown in image bellow.
+-	When you click on allow button, Firefox will automatically install Selenium IDE software. after completion of Selenium IDE     installation, it will show one pop up saying Selenium IDE installation completed. you need to restart your browser to use      selenium IDE. Click on Restart Now button as show in image bellow.
+-	When you click on allow button, Firefox will automatically install Selenium IDE software. after completion of Selenium IDE     installation, it will show one pop up saying Selenium IDE installation completed. you need to restart your browser to use      selenium IDE. Click on Restart Now button as show in image bellow.
+-	Click on Selenium IDE as shown in image above. It will launch Selenium IDE software window as shown in image bellow. 
+-	Now you can use it to record and play your web application test.
 
 
 **If you'd like to make changes, you would simply open the project directory in the IDE of your choice, configure it for spring, maven, and tomcat, and you'll be able to make your edits in no time!**
