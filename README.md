@@ -96,12 +96,12 @@ MACINTOSH:
 -	Click on Selenium IDE as shown in image above. It will launch Selenium IDE software window as shown in image below. 
 -	Once you have the IDE open, you can click on File > Open... or File > Open Test Suite... to open the tests.
 -	Once the tests are loaded into the IDE you can then click the Play Entire Test Suite to run through all the tests.
--	The tests will turn green or red depending on whether they pass or fail. *
--	The functional tests will also be run when you build the project.
+-	The tests will turn green or red depending on whether they pass or fail. **See NOTE 1**
+-	The functional tests will also be run when you build the project. **See NOTE 2**
 
-* Important Note: Our functional tests for the UploadPassedTest and SettingsPassedTest involve us uploading an image from our local harddrives. Since the test will go to the location to check for an image and try uploading it, you will have to change the location to a .jpg file on your local machine. 
+Note 1: Our functional tests for the UploadPassedTest and SettingsPassedTest involve us uploading an image from our local harddrives. Since the test will go to the location to check for an image and try uploading it, you will have to change the location to a .jpg file on your local machine. 
 
-** An even more important note: The functional tests are set to run when you build from the command line using Maven, so you should see the tests running prior to creating the .war file to upload to Tomcat. 
+Note 2: An even more important note: The functional tests are set to run when you build from the command line using Maven, so you should see the tests running prior to creating the .war file to upload to Tomcat. 
 
 **If you'd like to make changes, you would simply open the project directory in the IDE of your choice, configure it for spring, maven, and tomcat, and you'll be able to make your edits in no time!**
 
