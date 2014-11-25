@@ -90,12 +90,18 @@ MACINTOSH:
 10)	Download/Install Selenium
 - Open Mozilla Firefox Browser.
 -	Type URL : http://seleniumhq.org/download/ in your browser.Selenium IDE download page will get open then click on              latestDownload version link (Here is 1.3.0) as shown in image bellow. click on that link.
--	When you click on latest Selenium IDE Download version link, Firefox will show one popup saying do you want to allow Mozilla   Firefox to install selenium IDE or not. Click on Allow button as shown in image bellow.
+-	When you click on latest Selenium IDE Download version link, Firefox will show one popup saying do you want to allow Mozilla   Firefox to install selenium IDE or not. Click on Allow button as shown in image below.
 -	When you click on allow button, Firefox will automatically install Selenium IDE software. after completion of Selenium IDE     installation, it will show one pop up saying Selenium IDE installation completed. you need to restart your browser to use      selenium IDE. Click on Restart Now button as show in image bellow.
 -	When you click on allow button, Firefox will automatically install Selenium IDE software. after completion of Selenium IDE     installation, it will show one pop up saying Selenium IDE installation completed. you need to restart your browser to use      selenium IDE. Click on Restart Now button as show in image bellow.
--	Click on Selenium IDE as shown in image above. It will launch Selenium IDE software window as shown in image bellow. 
--	Now you can use it to record and play your web application test.
+-	Click on Selenium IDE as shown in image above. It will launch Selenium IDE software window as shown in image below. 
+-	Once you have the IDE open, you can click on File > Open... or File > Open Test Suite... to open the tests.
+-	Once the tests are loaded into the IDE you can then click the Play Entire Test Suite to run through all the tests.
+-	The tests will turn green or red depending on whether they pass or fail. *
+-	The functional tests will also be run when you build the project.
 
+* Important Note: Our functional tests for the UploadPassedTest and SettingsPassedTest involve us uploading an image from our local harddrives. Since the test will go to the location to check for an image and try uploading it, you will have to change the location to a .jpg file on your local machine. 
+
+** An even more important note: The functional tests are set to run when you build from the command line using Maven, so you should see the tests running prior to creating the .war file to upload to Tomcat. 
 
 **If you'd like to make changes, you would simply open the project directory in the IDE of your choice, configure it for spring, maven, and tomcat, and you'll be able to make your edits in no time!**
 
