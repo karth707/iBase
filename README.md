@@ -99,6 +99,8 @@ MACINTOSH:
 
 **If you'd like to make changes, you would simply open the project directory in the IDE of your choice, configure it for spring, maven, and tomcat, and you'll be able to make your edits in no time!**
 
+**Here are the test cases running on a terminal https://www.youtube.com/watch?v=UkckRuDRIU8**
+
 The MIT License (MIT)
 Copyright (c) <2014> <iBase>
 Permission is hereby granted, free of charge, to any person obtaining a copy
