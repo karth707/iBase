@@ -11,7 +11,7 @@ To be able to run our project you will need a few things:
 
 Windows:
 
-1)Download Maven 
+1) Download Maven 
 - Unzip the distribution archive, i.e. apache-maven-3.2.3-bin.zip to the directory you wish to install Maven 3.2.3. These        instructions assume you chose C:\Program Files\Apache Software Foundation. The subdirectory apache-maven-3.2.3 will be         created from the archive.
 - Add the M2_HOME environment variable by opening up the system properties (WinKey + Pause), selecting the "Advanced" tab, and   the "Environment Variables" button, then adding the M2_HOME variable in the user variables with the value C:\Program           Files\Apache Software Foundation\apache-maven-3.2.3. Be sure to omit any quotation marks around the path even if it contains   spaces. Note: For Maven 2.0.9, also be sure that the M2_HOME doesn't have a '\' as last character.
 - In the same dialog, add the M2 environment variable in the user variables with the value %M2_HOME%\bin.
@@ -21,8 +21,8 @@ Windows:
 - Open a new command prompt (Winkey + R then type cmd) and run mvn --version to verify that it is correctly installed.
 
 2)	Download Tomat
-•	Goto http://tomcat.apache.org ⇒ Downloads ⇒ Tomcat 8.0 ⇒ "8.0.{xx}" (where {xx} is the latest upgrade number) ⇒ Binary Distributions ⇒ Core ⇒ "zip" package (e.g., "apache-tomcat-8.0.{xx}.zip", about 8 MB).
-•	UNZIP into a directory of your choice. DO NOT unzip onto the Desktop (because its path is hard to locate). I suggest using "d:\myProject". Tomcat will be unzipped into directory "d:\myProject\apache-tomcat-8.0.{xx}". For ease of use, we shall shorten and rename this directory to "d:\myProject\tomcat". Take note of Your Tomcat Installed Directory. Hereafter, I shall refer to the Tomcat installed directory as <TOMCAT_HOME> (or <CATALINA_HOME> - "Catalina" is the codename for Tomcat 5 and above).
+-	Goto http://tomcat.apache.org ⇒ Downloads ⇒ Tomcat 8.0 ⇒ "8.0.{xx}" (where {xx} is the latest upgrade number) ⇒ Binary         Distributions ⇒ Core ⇒ "zip" package (e.g., "apache-tomcat-8.0.{xx}.zip", about 8 MB).
+-	UNZIP into a directory of your choice. DO NOT unzip onto the Desktop (because its path is hard to locate). I suggest using     "d:\myProject". Tomcat will be unzipped into directory "d:\myProject\apache-tomcat-8.0.{xx}". For ease of use, we shall        shorten and rename this directory to "d:\myProject\tomcat". Take note of Your Tomcat Installed Directory. Hereafter, I shall   refer to the Tomcat installed directory as <TOMCAT_HOME> (or <CATALINA_HOME> - "Catalina" is the codename for Tomcat 5 and     above).
 3)	Download MySQL Installer 
 4)	Download Sequel Pro
 5)	Then you can start downloading the source code from GitHub by simply clicking "Download Zip" in the bottom right corner of our project page.
