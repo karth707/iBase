@@ -10,7 +10,8 @@ To be able to run our project you will need a few things:
 - If you plan to edit the source code, you will also need a Java IDE (our group used both Eclipse and IntelliJ)
 
 Windows:
-1)	Download Maven 
+
+1)Download Maven 
 - Unzip the distribution archive, i.e. apache-maven-3.2.3-bin.zip to the directory you wish to install Maven 3.2.3. These        instructions assume you chose C:\Program Files\Apache Software Foundation. The subdirectory apache-maven-3.2.3 will be         created from the archive.
 - Add the M2_HOME environment variable by opening up the system properties (WinKey + Pause), selecting the "Advanced" tab, and   the "Environment Variables" button, then adding the M2_HOME variable in the user variables with the value C:\Program           Files\Apache Software Foundation\apache-maven-3.2.3. Be sure to omit any quotation marks around the path even if it contains   spaces. Note: For Maven 2.0.9, also be sure that the M2_HOME doesn't have a '\' as last character.
 - In the same dialog, add the M2 environment variable in the user variables with the value %M2_HOME%\bin.
