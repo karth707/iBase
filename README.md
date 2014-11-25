@@ -9,7 +9,7 @@ To be able to run our project you will need a few things:
 - The source code. This can be downloaded from GitHub in a variety of ways. Clone the repo or download the zip.
 - If you plan to edit the source code, you will also need a Java IDE (our group used both Eclipse and IntelliJ)
 
-Windows:
+WINDOWS:
 
 1) Download Maven 
 - Unzip the distribution archive, i.e. apache-maven-3.2.3-bin.zip to the directory you wish to install Maven 3.2.3. These        instructions assume you chose C:\Program Files\Apache Software Foundation. The subdirectory apache-maven-3.2.3 will be         created from the archive.
@@ -47,7 +47,7 @@ Windows:
 -	Click on Selenium IDE as shown in image above. It will launch Selenium IDE software window as shown in image bellow. 
 -	Now you can use it to record and play your web application test.
 
-Mac:
+MACINTOSH:
 
 1)Download Maven 
 -	Extract the distribution archive, i.e. apache-maven-3.2.3-bin.tar.gz to the directory you wish to install Maven 3.2.3. These   instructions assume you chose/usr/local/apache-maven. The subdirectory apache-maven-3.2.3 will be created from the archive.
