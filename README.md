@@ -11,14 +11,13 @@ To be able to run our project you will need a few things:
 
 Windows:
 1)	Download Maven 
-
-o	Unzip the distribution archive, i.e. apache-maven-3.2.3-bin.zip to the directory you wish to install Maven 3.2.3. These instructions assume you chose C:\Program Files\Apache Software Foundation. The subdirectory apache-maven-3.2.3 will be created from the archive.
-o	Add the M2_HOME environment variable by opening up the system properties (WinKey + Pause), selecting the "Advanced" tab, and the "Environment Variables" button, then adding the M2_HOME variable in the user variables with the value C:\Program Files\Apache Software Foundation\apache-maven-3.2.3. Be sure to omit any quotation marks around the path even if it contains spaces. Note: For Maven 2.0.9, also be sure that the M2_HOME doesn't have a '\' as last character.
-o	In the same dialog, add the M2 environment variable in the user variables with the value %M2_HOME%\bin.
-o	Optional: In the same dialog, add the MAVEN_OPTS environment variable in the user variables to specify JVM properties, e.g. the value -Xms256m -Xmx512m. This environment variable can be used to supply extra options to Maven.
-o	In the same dialog, update/create the Path environment variable in the user variables and prepend the value %M2% to add Maven available in the command line.
-o	In the same dialog, make sure that JAVA_HOME exists in your user variables or in the system variables and it is set to the location of your JDK, e.g. C:\Program Files\Java\jdk1.7.0_51 and that %JAVA_HOME%\bin is in your Path environment variable.
-o	Open a new command prompt (Winkey + R then type cmd) and run mvn --version to verify that it is correctly installed.
+- Unzip the distribution archive, i.e. apache-maven-3.2.3-bin.zip to the directory you wish to install Maven 3.2.3. These        instructions assume you chose C:\Program Files\Apache Software Foundation. The subdirectory apache-maven-3.2.3 will be         created from the archive.
+- Add the M2_HOME environment variable by opening up the system properties (WinKey + Pause), selecting the "Advanced" tab, and   the "Environment Variables" button, then adding the M2_HOME variable in the user variables with the value C:\Program           Files\Apache Software Foundation\apache-maven-3.2.3. Be sure to omit any quotation marks around the path even if it contains   spaces. Note: For Maven 2.0.9, also be sure that the M2_HOME doesn't have a '\' as last character.
+- In the same dialog, add the M2 environment variable in the user variables with the value %M2_HOME%\bin.
+- Optional: In the same dialog, add the MAVEN_OPTS environment variable in the user variables to specify JVM properties, e.g.    the value -Xms256m -Xmx512m. This environment variable can be used to supply extra options to Maven.
+- In the same dialog, update/create the Path environment variable in the user variables and prepend the value %M2% to add Maven   available in the command line.
+-	In the same dialog, make sure that JAVA_HOME exists in your user variables or in the system variables and it is set to the     location of your JDK, e.g. C:\Program Files\Java\jdk1.7.0_51 and that %JAVA_HOME%\bin is in your Path environment variable.
+- Open a new command prompt (Winkey + R then type cmd) and run mvn --version to verify that it is correctly installed.
 
 2)	Download Tomat
 •	Goto http://tomcat.apache.org ⇒ Downloads ⇒ Tomcat 8.0 ⇒ "8.0.{xx}" (where {xx} is the latest upgrade number) ⇒ Binary Distributions ⇒ Core ⇒ "zip" package (e.g., "apache-tomcat-8.0.{xx}.zip", about 8 MB).
