@@ -48,30 +48,30 @@ Windows:
 -	Now you can use it to record and play your web application test.
 
 Mac:
-1)	Download Maven 
 
-•	Extract the distribution archive, i.e. apache-maven-3.2.3-bin.tar.gz to the directory you wish to install Maven 3.2.3. These instructions assume you chose/usr/local/apache-maven. The subdirectory apache-maven-3.2.3 will be created from the archive.
-•	In a command terminal, add the M2_HOME environment variable, e.g. export M2_HOME=/usr/local/apache-maven/apache-maven-3.2.3.
-•	Add the M2 environment variable, e.g. export M2=$M2_HOME/bin.
-•	Optional: Add the MAVEN_OPTS environment variable to specify JVM properties, e.g. export MAVEN_OPTS="-Xms256m -Xmx512m". This environment variable can be used to supply extra options to Maven.
-•	Add M2 environment variable to your path, e.g. export PATH=$M2:$PATH.
-•	Make sure that JAVA_HOME is set to the location of your JDK, e.g. export JAVA_HOME=/usr/java/jdk1.7.0_51 and that $JAVA_HOME/bin is in your PATH environment variable.
-•	Run mvn --version to verify that it is correctly installed.
+1)Download Maven 
+-	Extract the distribution archive, i.e. apache-maven-3.2.3-bin.tar.gz to the directory you wish to install Maven 3.2.3. These   instructions assume you chose/usr/local/apache-maven. The subdirectory apache-maven-3.2.3 will be created from the archive.
+-	In a command terminal, add the M2_HOME environment variable, e.g. export M2_HOME=/usr/local/apache-maven/apache-maven-3.2.3.
+-	Add the M2 environment variable, e.g. export M2=$M2_HOME/bin.
+-	Optional: Add the MAVEN_OPTS environment variable to specify JVM properties, e.g. export MAVEN_OPTS="-Xms256m -Xmx512m". This   environment variable can be used to supply extra options to Maven.
+-	Add M2 environment variable to your path, e.g. export PATH=$M2:$PATH.
+-	Make sure that JAVA_HOME is set to the location of your JDK, e.g. export JAVA_HOME=/usr/java/jdk1.7.0_51 and that              $JAVA_HOME/bin is in your PATH environment variable.
+-	Run mvn --version to verify that it is correctly installed.
 
 2)	Download Tomat
-•	Download a binary distribution of the core module: apache-tomcat-7.0.47.tar.gz from here. I picked the tar.gz in Binary Distributions / Core section.
-•	Opening/unarchiving the archive will create a folder structure in your Downloads folder: (btw, this free Unarchiver app is perfect for all kinds of compressed files and superior to the built-in Archive Utility.app)
-~/Downloads/apache-tomcat-7.0.47
-•	Open to Terminal app to move the unarchived distribution to /usr/local:
-sudo mkdir -p /usr/local
-sudo mv ~/Downloads/apache-tomcat-7.0.47 /usr/local
-•	To make it easy to replace this release with future releases, we are going to create a symbolic link that we are going to use when referring to Tomcat (after removing the old link, you might have from installing a previous version):
-sudo rm -f /Library/Tomcat
-sudo ln -s /usr/local/apache-tomcat-7.0.47 /Library/Tomcat
-•	Change ownership of the /Library/Tomcat folder hierarchy:
-sudo chown -R <your_username> /Library/Tomcat
-•	Make all scripts executable:
-sudo chmod +x /Library/Tomcat/bin/*.sh
+-	Download a binary distribution of the core module: apache-tomcat-7.0.47.tar.gz from here. I picked the tar.gz in Binary        Distributions / Core section.
+-	Opening/unarchiving the archive will create a folder structure in your Downloads folder: (btw, this free Unarchiver app is     perfect for all kinds of compressed files and superior to the built-in Archive Utility.app)
+  ~/Downloads/apache-tomcat-7.0.47
+-	Open to Terminal app to move the unarchived distribution to /usr/local:
+  sudo mkdir -p /usr/local
+  sudo mv ~/Downloads/apache-tomcat-7.0.47 /usr/local
+-	To make it easy to replace this release with future releases, we are going to create a symbolic link that we are going to use   when referring to Tomcat (after removing the old link, you might have from installing a previous version):
+  sudo rm -f /Library/Tomcat
+  sudo ln -s /usr/local/apache-tomcat-7.0.47 /Library/Tomcat
+-	Change ownership of the /Library/Tomcat folder hierarchy:
+  sudo chown -R <your_username> /Library/Tomcat
+-	Make all scripts executable:
+  sudo chmod +x /Library/Tomcat/bin/*.sh
 
 3)	Download MySQL Installer 
 
