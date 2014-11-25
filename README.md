@@ -108,7 +108,9 @@ Note 2: An even more important note: The functional tests are set to run when yo
 
 **If you'd like to make changes, you would simply open the project directory in the IDE of your choice, configure it for spring, maven, and tomcat, and you'll be able to make your edits in no time!**
 
-**Here are the test cases running on a terminal https://www.youtube.com/watch?v=UkckRuDRIU8**
+**Here are the test cases running on a terminal: https://www.youtube.com/watch?v=UkckRuDRIU8**
+
+** And here are the test cases running via Selenium IDE:https://www.youtube.com/watch?v=YyKnp7Op6nM**
 
 
 
