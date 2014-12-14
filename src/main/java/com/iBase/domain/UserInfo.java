@@ -15,10 +15,12 @@ public class UserInfo {
 		
 	}
 	
-	public UserInfo(String userId, String password
+	public UserInfo(String userId, String password, String firstName, String lastName
 			, String friendList, String imagesList, int imageCount, String profilePic){
 		this.friendList = friendList;
 		this.imagesList = imagesList;
+		this.firstName = firstName;
+		this.lastName = lastName;
 		this.password = password;
 		this.userId = userId;
 		this.imageCount = imageCount;

@@ -41,12 +41,12 @@ img {
       <div class="container">
           <div class="collapse navbar-collapse navHeaderCollapse">
               <ul class="nav navbar-nav navbar-left navbar">
-                  <li class="active"><a href="<c:url value="/home"/>">Home</a></li>
+                  <li><a href="<c:url value="/home"/>">Home</a></li>
                   <li><a href="<c:url value="/upload"/>">Upload</a></li>
-                  <li><a href="<c:url value="/friends"/>">Friends</a></li>
+                  <li><a href="<c:url value="/settings"/>">Settings</a></li>
+                  <li class="active"><a href="<c:url value="/friends"/>">Friends</a></li>
               </ul>
               <ul class="nav navbar-nav navbar-right navbar">
-              	<li><a href="<c:url value="/settings"/>">Settings</a></li>
               	<li>
               		<c:if test="${pageContext.request.userPrincipal.name != null}">
         				<a href="javascript:formSubmit()">Logout</a>
@@ -59,17 +59,17 @@ img {
 	<sec:authorize access="hasRole('ROLE_USER')">
  	<div class="container" style="margin-top:60px; position:relative">
     	<div style="padding-left:0%; position:absolute; z-index: 10">
-    		<a href="<c:url value="/settings"/>">
-    			<img src="<c:url value="/resources/images/${userName}/profile.jpg" />" alt="Sparky" class="grow" style="width:100px;height:auto;display:inline-block" onerror="this.src='<c:url value="/resources/images/sparky1.jpg" />'">
+    		<a href="<c:url value="/userProfile/${friendId}"/>">
+    			<img src="<c:url value="/resources/images/${friendId}/profile.jpg" />" alt="Sparky" class="grow" style="width:100px;height:auto;display:inline-block" onerror="this.src='<c:url value="/resources/images/sparky1.jpg" />'">
     		</a>	
     		<div style="width:100px;text-align:center; opacity: 0.5; background-color: black"">
-    		<a href="<c:url value="/settings"/>" style="color:whitesmoke">
+    		<a href="<c:url value="/userProfile/${friendId}"/>" style="color:whitesmoke">
     			<p>${fName}<br>${lName}</p>
 			</a>    			
     		</div>
     	</div>
     	<div style="padding-left:39%; position:absolute">
-    		<h1 style="color: white; padding: 5 25 5 25;opacity: 0.6; background-color: black"><fmt:message key="photoHeading"/></h1>
+    		<h1 style="color: white; padding: 5 25 5 25;opacity: 0.6; background-color: black">${fName}'s Images</h1>
     		<p style="text-align:center; color:black"><c:out value="${imagesMessage}"/></p>
     	</div>
     	<div style="padding-left:80%; position:absolute">
@@ -87,13 +87,12 @@ img {
           	}
       	</script>
 
-  <div align="center" style="margin-top:100px; width:100%; padding: 0px 15px 15px 15px;">
+  <div align="center" style="margin-top:120px; width:100%; padding: 0px 15px 15px 15px;">
   		<c:if test="${not empty imageObjects}">
   			<br>
-  			<p style="margin-bottom: 10px;color: darkgray;width: 35%;">Click on the image to view and apply filters!!</p>
   			<c:forEach items="${imageObjects}" var="image">
   				<div class="image" align="center">
-  				<a href="<c:url value="/edit/${image.imageId}"/>"><img src="<c:url value="${image.imageLocation}"/>" class="grow-rotate" /></a>
+  				<img src="<c:url value="${image.imageLocation}"/>" class="grow-rotate" />
   					<div class="text" >
   					 	<p style="padding-top: 10">${image.imageTitle}</p>
   					</div>

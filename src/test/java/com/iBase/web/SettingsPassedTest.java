@@ -20,7 +20,8 @@ public class SettingsPassedTest {
   @Before
   public void setUp() throws Exception {
     driver = new FirefoxDriver();
-    baseUrl = "http://ec2-54-187-126-153.us-west-2.compute.amazonaws.com";
+    //baseUrl = "http://ec2-54-187-126-153.us-west-2.compute.amazonaws.com";
+    baseUrl = "localhost:8080";
     driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
   }
 
@@ -40,7 +41,6 @@ public class SettingsPassedTest {
   	  assertEquals("Upload", driver.findElement(By.linkText("Upload")).getText());
   	  assertEquals("Home", driver.findElement(By.linkText("Home")).getText());
   	  assertEquals("Logout", driver.findElement(By.linkText("Logout")).getText());
-  	  assertEquals("jake@asu.edu", driver.findElement(By.cssSelector("em")).getText());
   	  assertEquals("Update your profile picture!", driver.findElement(By.cssSelector("h3")).getText());
   	  assertEquals("Profile picture successfully updated!", driver.findElement(By.cssSelector("p")).getText());
   }

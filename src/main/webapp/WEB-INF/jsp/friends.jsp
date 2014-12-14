@@ -11,39 +11,25 @@
 <style>
 img {
     display: block;
-	max-width:300px;
-    max-height:300px;
+	max-width:200px;
+    max-height:200px;
     width: auto;
     height: auto;
 }
-.image {
-	display: inline-block;
-	max-width:300px;
-	position:relative;
-	margin: 2px; 
-}
-.image .text {
-    position:absolute;
-    top:10px;        
-    width: 100%;   
-    color:white;
-    background-color: rgba(0,0,0,0.7);
-    opacity: .90; /* Standard: FF gt 1.5, Opera, Safari, CSS3 */
-    filter: alpha(opacity=90); /* IE lt 8 */
-    -ms-filter: "alpha(opacity=90)"; /* IE 8 */
-    -khtml-opacity: .90; /* Safari 1.x */
-    -moz-opacity: .90; /* FF lt 1.5, Netscape */
+
+user {
+    display: inline-block;
 }
 </style>
-  </head>
+</head>
   <body>
   <div class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
           <div class="collapse navbar-collapse navHeaderCollapse">
               <ul class="nav navbar-nav navbar-left navbar">
-                  <li class="active"><a href="<c:url value="/home"/>">Home</a></li>
+                  <li><a href="<c:url value="/home"/>">Home</a></li>
                   <li><a href="<c:url value="/upload"/>">Upload</a></li>
-                  <li><a href="<c:url value="/friends"/>">Friends</a></li>
+                  <li class="active"><a href="<c:url value="/friends"/>">Friends</a></li>
               </ul>
               <ul class="nav navbar-nav navbar-right navbar">
               	<li><a href="<c:url value="/settings"/>">Settings</a></li>
@@ -69,8 +55,8 @@ img {
     		</div>
     	</div>
     	<div style="padding-left:39%; position:absolute">
-    		<h1 style="color: white; padding: 5 25 5 25;opacity: 0.6; background-color: black"><fmt:message key="photoHeading"/></h1>
-    		<p style="text-align:center; color:black"><c:out value="${imagesMessage}"/></p>
+    		<h1 style="color: white; padding: 5 25 5 25;opacity: 0.6; background-color: black">Your Friends</h1>
+    		<p style="text-align:center; color:black"><c:out value="${friendsMessage}"/></p>
     	</div>
     	<div style="padding-left:80%; position:absolute">
     	</div> 
@@ -88,22 +74,40 @@ img {
       	</script>
 
   <div align="center" style="margin-top:100px; width:100%; padding: 0px 15px 15px 15px;">
-  		<c:if test="${not empty imageObjects}">
-  			<br>
-  			<p style="margin-bottom: 10px;color: darkgray;width: 35%;">Click on the image to view and apply filters!!</p>
-  			<c:forEach items="${imageObjects}" var="image">
-  				<div class="image" align="center">
-  				<a href="<c:url value="/edit/${image.imageId}"/>"><img src="<c:url value="${image.imageLocation}"/>" class="grow-rotate" /></a>
-  					<div class="text" >
-  					 	<p style="padding-top: 10">${image.imageTitle}</p>
-  					</div>
+	
+	<div class="container" style="width:50%;text-align:center">
+		<div class="row">
+            <div class="col-md-12">
+                <br>
+			        <form:form commandName="friend" method="POST">
+			            <p style="color: white; padding: 6 0 6 0;opacity: 0.6; background-color: black">
+			            Friend ID: <form:input type="text" path="userId" style="width: 80%;color:black"/>
+			            </p>
+			            <br>
+				        <input type="submit" value="Add" />
+			        </form:form>
+		         <p>${friendError}</p>
+         	</div>
+        </div> 	
+  	</div>
+	<div align="center" style="width:70%;height:100%; padding: 0px 15px 15px 15px;">  
+  		<c:if test="${not empty friendObjects}">
+  			<br>  			
+  			<c:forEach items="${friendObjects}" var="friendObj">
+  				<div class="user grow" align="center" style="margin:0 4 0 4">
+    				<a href="<c:url value="/user/${friendObj.userId}"/>">
+    					<img src="<c:url value="/resources/images/${friendObj.userId}/profile.jpg" />" alt="Sparky" style="width:auto;height:auto;display:inline-block" onerror="this.src='<c:url value="/resources/images/sparky1.jpg" />'">
+    				</a>	
+    				<div style="width:auto;text-align:center; opacity: 0.5; background-color: black"">
+    					<a href="<c:url value="/userProfile/${friendObj.userId}"/>" style="color:whitesmoke">
+    						<p>${friendObj.fName}<br>${friendObj.lName}</p>
+						</a>    			
+    				</div>					
   				</div>
   			</c:forEach>
-  		</c:if> 
+  		</c:if>
+  	</div> 
   </div>
-  <br>
-  <br>
-  <br>
   <br>
   </sec:authorize>
   </body>

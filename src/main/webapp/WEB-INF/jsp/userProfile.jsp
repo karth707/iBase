@@ -14,6 +14,16 @@ img {
     width: auto;
     height: auto;
 }
+userfont {
+	font-size: large;
+	font-weight: bold;
+}
+h4 {
+	color: white; 
+	padding: 5 25 5 25;
+	opacity: 0.6; 
+	background-color: black;
+}
 </style>
 </head>
     <body>
@@ -24,10 +34,10 @@ img {
                 <ul class="nav navbar-nav navbar-left navbar">
                     <li><a href="<c:url value="/home"/>">Home</a></li>
                     <li><a href="<c:url value="/upload"/>">Upload</a></li>
-                    <li><a href="<c:url value="/friends"/>">Friends</a></li>
+                    <li><a href="<c:url value="/settings"/>">Settings</a></li>
+                    <li class="active"><a href="<c:url value="/friends"/>">Friends</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right navbar">
-              	<li class="active"><a href="<c:url value="/settings"/>">Settings</a></li>
               	<li>
               		<c:if test="${pageContext.request.userPrincipal.name != null}">
         				<a href="javascript:formSubmit()">Logout</a>
@@ -62,21 +72,22 @@ img {
                 document.getElementById("logoutForm").submit();
             }
         </script>        
-    <div class="container" style="margin-top:100px;width:50%;text-align:center">
+    <div class="container" style="margin-top:10px;width:50%;text-align:center">
         <div class="row">
             <div class="col-md-12">
-            <img src="<c:url value="/resources/images/${userName}/profile.jpg" />" alt="Sparky" style="width:auto;height:auto;display:inline-block" onerror="this.src='<c:url value="/resources/images/sparky1.jpg" />'">
-                <h3 style="color: white; padding: 5 25 5 25;opacity: 0.6; background-color: black">Update your profile picture!</h3> <br>
-				<p style="color:darkgray">${uploadInfo}</p>
-    			<form:form commandName="profileImageFile" enctype="multipart/form-data" method="POST">
-        			<form:errors path="*" cssStyle="color : red;"/>
-        			${errors2}
-        			<form:input type="file" path="profileImageFile" />
-        			<input type="submit" value="Update" />
-    		 	</form:form>
+            	<h3 style="color: white; padding: 5 25 5 25;opacity: 0.6; background-color: black">${friendFName}'s Profile</h3><br>
+            	<img src="<c:url value="/resources/images/${friendId}/profile.jpg" />" alt="Sparky" style="width:auto;height:auto;display:inline-block" onerror="this.src='<c:url value="/resources/images/sparky1.jpg" />'">
+            	<br>
+				<p><h4>First Name:</h4>&nbsp; <userfont>${friendFName}</userfont></p>
+				<p><h4>Last Name:</h4>&nbsp; <userfont>${friendLName}</userfont></p>
+				<p><h4>Email address:</h4>&nbsp; <userfont style="font-style: italic;">${friendEmail}</userfont></p>
+				<p><h4>Images Uploaded:</h4>&nbsp; <userfont>${friendImageCount}</userfont></p> 			
     		 </div>
         </div>
     </div>
+    <br>
+    <br>
+    <br>
 </body>
 </body>
 </sec:authorize>

@@ -20,7 +20,8 @@ public class SignUpFailedPasswordTest {
   @Before
   public void setUp() throws Exception {
     driver = new FirefoxDriver();
-    baseUrl = "http://ec2-54-187-126-153.us-west-2.compute.amazonaws.com";
+    //baseUrl = "http://ec2-54-187-126-153.us-west-2.compute.amazonaws.com";
+    baseUrl = "localhost:8080";
     driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
   }
 

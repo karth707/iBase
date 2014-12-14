@@ -46,6 +46,9 @@ public class SettingsController implements HandlerExceptionResolver{
 		if (!(auth instanceof AnonymousAuthenticationToken)) {
 			UserDetails userDetail = (UserDetails) auth.getPrincipal();
 			model.addAttribute("userName", userDetail.getUsername());
+			UserInfo user = userInfoDAO.findById(userDetail.getUsername());
+			model.addAttribute("fName", user.getFirstName());
+	        model.addAttribute("lName", user.getLastName());
 			logger.info("Returning settings View!");
 			return "settings";
 		}
@@ -66,6 +69,8 @@ public class SettingsController implements HandlerExceptionResolver{
 		}
     	
     	if(!result.hasErrors()){
+    		
+    		
     		String fileName = profileImageModel.getProfileImageFile().getOriginalFilename();
 			if(!isValidFile(fileName)){
 				model.addAttribute("uploadInfo", "Sorry! Invalid File!");
@@ -86,6 +91,9 @@ public class SettingsController implements HandlerExceptionResolver{
 			}
 			
 			UserInfo user = getUserInfo(userName);
+			model.addAttribute("fName", user.getFirstName());
+	        model.addAttribute("lName", user.getLastName());
+	        
 			String newimageLocation = dir.getAbsolutePath()
 					+ File.separator 
 					+ "profile.jpg";

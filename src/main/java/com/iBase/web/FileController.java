@@ -67,6 +67,9 @@ public class FileController implements HandlerExceptionResolver{
 		if (!(auth instanceof AnonymousAuthenticationToken)) {
 			UserDetails userDetail = (UserDetails) auth.getPrincipal();
 			model.addAttribute("userName", userDetail.getUsername());
+			UserInfo user = userInfoDAO.findById(userDetail.getUsername());
+			model.addAttribute("fName", user.getFirstName());
+	        model.addAttribute("lName", user.getLastName());
 			logger.info("Returning upload View!");
 			return "upload";
 		}
@@ -115,12 +118,12 @@ public class FileController implements HandlerExceptionResolver{
 			
 			boolean update = updateDB(user, dbLocation, imageModel.getName());   
 			if(update==false){
-				model.addAttribute("uploadLimit", "Sorry! DataBase update Error!");
+				model.addAttribute("uploadLimit", "Sorry! Reached upload Limit!");
 				return "upload";
 			}
 			File imageFile = new File(newimageLocation);
-			imageModel.setName(imageModel.getImageFile().getOriginalFilename());
-			
+			//imageModel.setName(imageModel.getImageFile().getOriginalFilename());
+			model.addAttribute("uploadedFileName", imageModel.getImageFile().getOriginalFilename());
 			try {
 				outputStream = new FileOutputStream(imageFile);
 				outputStream.write(imageModel.getImageFile().getFileItem().get());
@@ -131,7 +134,7 @@ public class FileController implements HandlerExceptionResolver{
 			}
 			logger.info("Server File Location="+imageFile.getAbsolutePath());
 			model.addAttribute("uploadedImage", dbLocation);	
-			model.addAttribute("imageId", user.getImageCount()+1);
+			model.addAttribute("imageDesc", imageModel.getName());
 			return "uploadSuccess";
 		}else{
 			return "upload";
@@ -203,8 +206,7 @@ public class FileController implements HandlerExceptionResolver{
 			HttpServletResponse response, Object handler, Exception ex) {
 		Map<Object, Object> model = new HashMap<Object, Object>();
 		if (ex instanceof MaxUploadSizeExceededException){
-			model.put("errors", "File size should be less then "+
-					((MaxUploadSizeExceededException)ex).getMaxUploadSize()+" byte.");
+			model.put("errors", "File size should be less then 3mb");
 		}else{
 			model.put("errors", "Unexpected error: " + ex.getMessage());
 		}

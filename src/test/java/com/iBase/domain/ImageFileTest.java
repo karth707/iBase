@@ -17,7 +17,7 @@ public class ImageFileTest {
 	@Test
 	public void testSetAndGetName(){
 		String name = "name";
-		assertEquals("n/a",file.getName());
+		assertEquals("",file.getName());
 		file.setName(name);
 		assertEquals(name, file.getName());
 	}

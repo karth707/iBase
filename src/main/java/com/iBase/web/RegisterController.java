@@ -2,6 +2,8 @@ package com.iBase.web;
 
 import java.util.Map;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -12,11 +14,15 @@ import com.iBase.domain.NewUser;
 import com.iBase.domain.UserInfo;
 import com.iBase.domain.UserRole;
 import com.iBase.service.db.UserInfoDAO;
+import com.iBase.web.sharing.FriendGraph;
 
 @Controller
-@RequestMapping(value = {"/signup", "/register"})
+@RequestMapping(value = {"/signup", "/signup/register", "/register"})
 public class RegisterController {
 
+	private FriendGraph friendGraph;
+	protected final Log logger = LogFactory.getLog(getClass());
+	
 	@Autowired
 	private UserInfoDAO userInfoDAO;
 	
@@ -31,6 +37,12 @@ public class RegisterController {
 	public String processRegistration(@ModelAttribute("userForm") NewUser newUser,
             Map<String, Object> model) {
 
+		friendGraph = new FriendGraph();
+		if(newUser.getFirstName()=="" || newUser.getLastName()==""
+				|| newUser.getLastName()==null || newUser.getFirstName()==null){
+			model.put("newUserError", "Please enter a valid Name");
+			return "signup";
+		}
 		if(userExists(newUser.getEmail())){
 			model.put("newUserError", "Username Taken!");
 			return "signup";
@@ -62,6 +74,9 @@ public class RegisterController {
 		userRole.setRole("ROLE_USER");
 		userRole.setUserId(newUser.getEmail());
 		userInfoDAO.insertUserRole(userRole);
+		
+		//add user to friend graph
+		friendGraph.addNode(newUser.getEmail());
 	}
 
 	private boolean userExists(String email) {

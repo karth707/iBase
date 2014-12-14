@@ -90,6 +90,8 @@ public class JdbcUserInfoDAO implements UserInfoDAO{
 				if(rs.next()){
 					UserInfo userInfo = new UserInfo(rs.getString("userId")
 							, rs.getString("password")
+							, rs.getString("firstName")
+							, rs.getString("lastName")
 							, rs.getString("friendList"), rs.getString("imagesList")
 							, rs.getInt("imageCount"), rs.getString("profilePic"));
 					return userInfo;

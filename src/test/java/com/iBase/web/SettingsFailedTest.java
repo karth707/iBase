@@ -24,7 +24,8 @@ public class SettingsFailedTest {
   @Before
   public void setUp() throws Exception {
     driver = new FirefoxDriver();
-    baseUrl = "http://ec2-54-187-126-153.us-west-2.compute.amazonaws.com";
+    //baseUrl = "http://ec2-54-187-126-153.us-west-2.compute.amazonaws.com";
+    baseUrl = "localhost:8080";
     driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
   }
 
@@ -44,7 +45,6 @@ public class SettingsFailedTest {
 	  assertEquals("Upload", driver.findElement(By.linkText("Upload")).getText());
 	  assertEquals("Settings", driver.findElement(By.linkText("Settings")).getText());
 	  assertEquals("iBase - Image Database", driver.getTitle());
-	  assertEquals("jake@asu.edu", driver.findElement(By.cssSelector("em")).getText());
 	  assertEquals("Logout", driver.findElement(By.linkText("Logout")).getText());
 	  assertEquals("Update your profile picture!", driver.findElement(By.cssSelector("h3")).getText());
 	  assertEquals("", driver.findElement(By.cssSelector("input[type=\"submit\"]")).getText());

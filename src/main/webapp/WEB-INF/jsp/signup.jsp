@@ -5,57 +5,117 @@
 
 <html>
 <head>
-<title><fmt:message key="title"/></title>	
+		<link href="<c:url value="/resources/css/styles.css" />" rel="stylesheet" type="text/css">
+      	<link href="<c:url value="/resources/css/bootstrap.min.css" />" rel="stylesheet" type="text/bootstrap.min.css">
+<title>iBase-Signup</title>
 <style>
 #login-box {
-	width: 300px;
-	padding: 20px;
-	margin: 100px auto;
-	background: #fff;
+	width: 100%;	
+	margin: 0 auto 0 auto;
+	background: transparent;
 	-webkit-border-radius: 2px;
 	-moz-border-radius: 2px;
-	border: 1px solid #000;
+}
+#headerBack {
+	width:100%;
+	height:220px;
+	background-image:url("<c:url value="/resources/images/background_4.jpg" />");
+}
+#headerBack2 {
+	width:100%;
+	height:150px;
+	background-image:url("<c:url value="/resources/images/background_4.jpg" />");
+}
+#backLogin{
+	width:100%;
+	height:auto;
+}
+#header{
+	width:100%;
+	height:80px;
+	padding: 5 25 5 25;
+	opacity: 0.8; 
+	background-color:black;
+}
+h1, h2 {	
+	color: whitesmoke;
+	text-align: center;	
+}
+h2 {
+	padding: 5 25 5 25;
+	opacity: 0.6; 
+	background-color:black;
+}
+table {
+	width: 400px;
+}
+
+tr.spaceUnder > td
+{
+  padding-bottom: 5px;
+}
+
+#field {
+	padding: 2 25 2 25;
+	background-color:black;
+	opacity: 0.6;
+	color: whitesmoke;
+	text-align: center;
+	width: 40%;
+	margin:4px;
 }
 </style>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>iBase-Registration</title>
 </head>
-<body background="<c:url value="/resources/images/background_1.jpg"/>"> 
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
+<body> 
+    
+    <div id="headerBack">
+    	<br>
+    	<br>
+    	<br>
+    	<div id="header">
+    		<h1>iBase - Your Personal Image Database</h1>
+    	</div>   
+    </div>
+    <div id="backLogin">
     <div align="center" id="login-box">
-    	<p style="color: red;">${newUserError}</p>
+    	<p style="background-color:red;color: white; text-align: center;opacity: 0.6; width: 40%;margin-top: 10px;">${newUserError}</p>
         <form:form action="register" method="post" commandName="userForm">
             <table border="0">
-                <tr>
+                <tr class="spaceUnder">
                     <td colspan="2" align="center"><h2>iBase - Registration</h2></td>
                 </tr>
-                <tr>
-                    <td>First Name:</td>
-                    <td><form:input path="firstName" /></td>
+                <tr class="spaceUnder">
+                    <td id="field" colspan="2" align="center">First Name:</td>
                 </tr>
-                <tr>
-                    <td>Last Name:</td>
-                    <td><form:input path="lastName" /></td>
+                <tr class="spaceUnder">
+                    <td colspan="2" align="center"><form:input path="firstName" style="width: 100%; border-color: gainsboro;border-width: 3;"/></td>
                 </tr>
-                <tr>
-                    <td>E-mail:</td>
-                    <td><form:input path="email" /></td>
+                <tr class="spaceUnder">
+                    <td id="field" colspan="2" align="center">Last Name:</td>
+				</tr>
+				<tr class="spaceUnder">                    
+                    <td colspan="2" align="center"><form:input path="lastName" style="width: 100%; border-color: gainsboro;border-width: 3;"/></td>
                 </tr>
-                <tr>
-                    <td>Password:</td>
-                    <td><form:password path="password" /></td>
+                <tr class="spaceUnder">
+                    <td id="field" colspan="2" align="center">E-mail:</td>
                 </tr>
-                    <td colspan="2" align="center"><input type="submit" value="Register" /></td>
+                <tr class="spaceUnder">
+                    <td colspan="2" align="center"><form:input path="email" style="width: 100%; border-color: gainsboro;border-width: 3;"/></td>
                 </tr>
-                <tr>
-                    <td colspan="2" align="center"><p>Login <a href="<c:url value="/login"/>">here!</a></p></td>
+                <tr class="spaceUnder">
+                    <td id="field" colspan="2" align="center">Password:</td>
+                </tr>    
+                    <td colspan="2" align="center"><form:password path="password" style="width: 100%; border-color: gainsboro;border-width: 3;"/></td>
                 </tr>
             </table>
+            <br>
+            <input type="submit" value="Register" />
         </form:form>
+        <div style="font-size: large"><a href="<c:url value="/login"/>">Login here!</a></div>
+        <br>
+    </div>
+    </div>
+    <div id="headerBack2">
     </div>
 </body>
 </html>
